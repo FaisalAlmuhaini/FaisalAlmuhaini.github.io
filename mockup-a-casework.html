@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!--
+  MOCKUP A — "Casework"
+  ============================================================
+  STRUCTURAL IDEA
+  The site is set like a technical report, not a marketing page.
+  Work is a numbered index; each entry is a case study with a
+  problem, a decision, and a consequence. Authority comes from
+  the typesetting and the density of real detail, not from
+  decoration. There is no hero section at all — the page opens
+  mid-thought, the way a paper does.
+
+  TYPE SCALE  (1.25 major third, fluid)
+    display  clamp(2.0rem, 1.4rem + 2.4vw, 3.05rem)
+    h2       1.563rem
+    h3       1.25rem
+    body     1.0rem / 1.65
+    meta     0.833rem
+    micro    0.72rem  (uppercase, tracked)
+
+  PALETTE
+    paper    #FDFCFA    ink      #16150F
+    muted    #6B6558    rule     #E2DED4
+    accent   #8B2E1F    (links, index numerals, rules only)
+
+  DECISIONS
+  - Serif for everything. Sans-serif portfolios are the default;
+    a well-set serif reads as considered and is instantly
+    distinguishable from a template.
+  - One accent, used only on numerals and link underlines.
+  - Asymmetric measure: text column is 62ch, offset left, with a
+    marginal column for metadata. Mirrors how documentation reads.
+  - No animation whatsoever.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faisal Almuhaini — AI Engineer</title>
+<style>
+  :root{
+    --paper:#FDFCFA; --ink:#16150F; --muted:#6B6558;
+    --rule:#E2DED4; --accent:#8B2E1F;
+    --serif: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+    --mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    --measure:62ch;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--serif); font-size:clamp(1rem,0.97rem + 0.15vw,1.0625rem);
+    line-height:1.65; font-kerning:normal;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:78rem; margin:0 auto; padding:0 clamp(1.25rem,5vw,4.5rem)}
+
+  /* ---- masthead ---- */
+  header{padding:clamp(3rem,7vw,5.5rem) 0 0}
+  .name{
+    font-size:clamp(2rem,1.4rem + 2.4vw,3.05rem);
+    line-height:1.08; letter-spacing:-0.02em; font-weight:600; margin:0;
+  }
+  .standfirst{
+    max-width:var(--measure); margin:1.5rem 0 0;
+    font-size:1.25rem; line-height:1.5; color:var(--ink);
+  }
+  .micro{
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.11em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  .facts{
+    margin:2.5rem 0 0; padding:0; list-style:none;
+    display:flex; flex-wrap:wrap; gap:0.5rem 2.25rem;
+  }
+  .facts li{font-family:var(--mono); font-size:0.833rem; color:var(--muted)}
+  .facts b{color:var(--ink); font-weight:400}
+
+  hr.rule{border:0; border-top:1px solid var(--rule); margin:clamp(3rem,6vw,4.5rem) 0}
+
+  /* ---- section head ---- */
+  .sec-head{display:flex; align-items:baseline; gap:1rem; margin:0 0 2.5rem}
+  .sec-head h2{
+    font-size:1.563rem; font-weight:600; letter-spacing:-0.01em; margin:0;
+  }
+  .sec-head .micro{white-space:nowrap}
+
+  /* ---- work index ---- */
+  .entry{
+    display:grid; grid-template-columns:3.5rem minmax(0,var(--measure));
+    gap:0 1.5rem; padding:2.25rem 0; border-top:1px solid var(--rule);
+  }
+  .entry:first-of-type{border-top:0; padding-top:0}
+  .num{
+    font-family:var(--mono); font-size:0.833rem; color:var(--accent);
+    padding-top:0.45rem; font-variant-numeric:tabular-nums;
+  }
+  .entry h3{font-size:1.25rem; font-weight:600; margin:0 0 0.15rem; letter-spacing:-0.01em}
+  .entry .meta{font-family:var(--mono); font-size:0.833rem; color:var(--muted); margin:0 0 0.9rem}
+  .entry p{margin:0 0 0.9rem; max-width:var(--measure)}
+  .entry p:last-child{margin-bottom:0}
+
+  .decision{
+    border-left:2px solid var(--accent); padding:0.1rem 0 0.1rem 1rem;
+    margin:1.25rem 0; color:var(--ink);
+  }
+  .decision .micro{display:block; margin-bottom:0.3rem}
+
+  .stack{
+    margin:1rem 0 0; padding:0; list-style:none;
+    display:flex; flex-wrap:wrap; gap:0.35rem 0.9rem;
+    font-family:var(--mono); font-size:0.78rem; color:var(--muted);
+  }
+
+  /* ---- two-col blocks ---- */
+  .cols{
+    display:grid; gap:2.5rem clamp(2rem,5vw,4rem);
+    grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));
+    max-width:64rem;
+  }
+  .block h3{font-size:1rem; font-weight:600; margin:0 0 0.75rem}
+  .block ul{margin:0; padding:0; list-style:none}
+  .block li{
+    padding:0.5rem 0; border-top:1px solid var(--rule);
+    font-size:0.94rem; display:flex; justify-content:space-between; gap:1rem;
+  }
+  .block li span:last-child{
+    font-family:var(--mono); font-size:0.78rem; color:var(--muted);
+    white-space:nowrap; padding-top:0.15rem;
+  }
+  .caveat{
+    font-size:0.875rem; color:var(--muted); max-width:var(--measure);
+    margin:1.25rem 0 0; font-style:italic;
+  }
+
+  a{color:inherit; text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:1px}
+  a:hover{color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-bottom-color:transparent}
+
+  footer{padding:0 0 clamp(3rem,7vw,5rem)}
+  .contact{display:flex; flex-wrap:wrap; gap:0.75rem 2rem; font-family:var(--mono); font-size:0.875rem}
+
+  @media (max-width:34rem){
+    .entry{grid-template-columns:1fr; gap:0}
+    .num{padding:0 0 0.4rem}
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--paper:#12110E; --ink:#EDEAE2; --muted:#918B7E; --rule:#2A2823; --accent:#D4735E}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="micro">Jeddah, Saudi Arabia — available</p>
+    <h1 class="name">Faisal Almuhaini</h1>
+    <p class="standfirst">
+      I build machine-learning systems that have to survive contact with
+      real infrastructure — offline servers, legacy SDKs, and operators
+      who need an answer rather than a probability.
+    </p>
+    <ul class="facts">
+      <li><b>BSc Artificial Intelligence</b>, University of Jeddah, 2025</li>
+      <li>AI &amp; Data Analytics at <b>2P</b></li>
+      <li>Arabic (native), English (professional)</li>
+    </ul>
+  </header>
+
+  <hr class="rule">
+
+  <section aria-labelledby="work">
+    <div class="sec-head">
+      <h2 id="work">Selected work</h2>
+      <span class="micro">Four of nine</span>
+    </div>
+
+    <article class="entry">
+      <div class="num">01</div>
+      <div>
+        <h3>Camera cleanliness monitoring</h3>
+        <p class="meta">2025–present · Computer vision, integration · Professional</p>
+        <p>
+          A large surveillance deployment had no way to know which of its
+          cameras had degraded — dust, rain, blur, obstruction. Finding out
+          meant someone opening feeds one at a time. I built the system that
+          answers it automatically: frames pulled from the VMS, classified
+          on-server, surfaced as operational state rather than raw model output.
+        </p>
+        <div class="decision">
+          <span class="micro">Decision</span>
+          The inference server has no internet access and modest CPU. I trained
+          a lightweight classifier and exported to ONNX rather than shipping a
+          Python runtime — the .NET scanner loads one file and has no dependency
+          chain to vendor.
+        </div>
+        <p>
+          Validation accuracy landed between 0.76 and 0.88 across runs. That
+          spread is the honest number, and it is why uncertain predictions route
+          to manual review instead of being auto-actioned. Frames were grouped by
+          source video before splitting, because near-duplicate frames across a
+          split will happily invent accuracy that isn't there.
+        </p>
+        <ul class="stack">
+          <li>PyTorch</li><li>ONNX Runtime</li><li>ASP.NET Core 8</li>
+          <li>Laravel</li><li>MySQL</li><li>Windows Server</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="num">02</div>
+      <div>
+        <h3>Arabic sentiment classification</h3>
+        <p class="meta">2025 · NLP · Academic</p>
+        <p>
+          Fine-tuned AraBERT over roughly 58,000 tweets. Most of the work was
+          not modelling — it was dialect variance, inconsistent normalisation,
+          and deciding what counted as a label when annotators disagreed.
+        </p>
+        <ul class="stack"><li>AraBERT</li><li>PyTorch</li><li>Transformers</li></ul>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="num">03</div>
+      <div>
+        <h3>Traffic signal control</h3>
+        <p class="meta">2025 · Reinforcement learning · Academic</p>
+        <p>
+          Object detection feeding a reinforcement-learning controller,
+          evaluated in SUMO. Useful mainly for what it taught me about reward
+          design: the first agent learned to starve one approach indefinitely
+          because throughput was all I measured.
+        </p>
+        <ul class="stack"><li>YOLO</li><li>SUMO</li><li>Python</li></ul>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="num">04</div>
+      <div>
+        <h3>Ticket classifier, containerised</h3>
+        <p class="meta">2026 · Practice project</p>
+        <p>
+          A deliberately small end-to-end service — model, prediction API,
+          health check, tests, Dockerfile — built to put container fundamentals
+          into practice rather than leave them at certificate level. It builds
+          and runs. It is not a production system and I don't present it as one.
+        </p>
+        <ul class="stack"><li>Docker</li><li>FastAPI</li><li>scikit-learn</li></ul>
+      </div>
+    </article>
+  </section>
+
+  <hr class="rule">
+
+  <section aria-labelledby="cred">
+    <div class="sec-head"><h2 id="cred">Credentials</h2></div>
+    <div class="cols">
+      <div class="block">
+        <h3>Applied in project work</h3>
+        <ul>
+          <li><span>Laravel &amp; PHP — Board Infinity</span><span>2026</span></li>
+          <li><span>Containers, Kubernetes &amp; OpenShift — IBM</span><span>2026</span></li>
+        </ul>
+      </div>
+      <div class="block">
+        <h3>Coursework and labs</h3>
+        <ul>
+          <li><span>MLOps on Google Cloud — Specialization</span><span>2026</span></li>
+          <li><span>ML in Production — DeepLearning.AI</span><span>2026</span></li>
+          <li><span>AI Specialist — Saudi Council of Engineers</span><span>2025</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="caveat">
+      Split deliberately. The first two I have shipped something with; the rest
+      are structured learning with hands-on labs, and I'd rather say so than
+      let a certificate imply production experience.
+    </p>
+  </section>
+
+  <hr class="rule">
+
+  <footer>
+    <div class="sec-head"><h2>Contact</h2></div>
+    <div class="contact">
+      <a href="#">faisal_almuhaini@hotmail.com</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">GitHub</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

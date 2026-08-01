@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!--
+  MOCKUP B — "Spec sheet"
+  ============================================================
+  STRUCTURAL IDEA
+  One page, no scrolling narrative — the whole career is visible
+  and scannable, set like a technical datasheet. Everything is
+  aligned to a strict two-column rule: label on the left in mono,
+  content on the right. Density is the point. A hiring manager
+  with ninety seconds can read the entire thing without clicking.
+
+  Where Mockup A argues, Mockup B declares. A is for someone who
+  will read; B is for someone who will skim.
+
+  TYPE SCALE  (1.2 minor third, tight)
+    display  clamp(1.75rem, 1.3rem + 1.9vw, 2.5rem)
+    h2       0.72rem  (mono, uppercase, tracked — labels only)
+    body     0.9375rem / 1.6
+    meta     0.8125rem mono
+
+  PALETTE
+    paper    #FFFFFF    ink      #101211
+    muted    #6E7573    rule     #E6E8E7
+    accent   #17594A    (rules, active states, numerals)
+
+  DECISIONS
+  - Sans for content, mono for every label and figure. The mono
+    does the structural work so no boxes, cards or shadows are
+    needed anywhere.
+  - Hairline rules only. No fills, no borders around content.
+  - Tabular numerals throughout so dates and figures align down
+    the column.
+  - Left label column collapses above the content on narrow
+    screens rather than shrinking — labels stay readable.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faisal Almuhaini — AI Engineer</title>
+<style>
+  :root{
+    --paper:#FFFFFF; --ink:#101211; --muted:#6E7573;
+    --rule:#E6E8E7; --accent:#17594A;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "Cascadia Mono", Consolas, "Segoe UI Mono", monospace;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:0.9375rem; line-height:1.6;
+    font-variant-numeric:tabular-nums;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:60rem; margin:0 auto; padding:clamp(2rem,5vw,4rem) clamp(1.25rem,4vw,3rem)}
+
+  /* ---- head ---- */
+  .top{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:1rem}
+  h1{
+    font-size:clamp(1.75rem,1.3rem + 1.9vw,2.5rem); line-height:1.1;
+    letter-spacing:-0.025em; font-weight:650; margin:0;
+  }
+  .role{font-family:var(--mono); font-size:0.8125rem; color:var(--accent); margin:0.4rem 0 0; letter-spacing:0.02em}
+  .status{
+    font-family:var(--mono); font-size:0.72rem; text-transform:uppercase;
+    letter-spacing:0.11em; color:var(--muted); padding-top:0.5rem;
+  }
+  .status::before{
+    content:""; display:inline-block; width:6px; height:6px; border-radius:50%;
+    background:var(--accent); margin-right:0.5rem; vertical-align:0.1em;
+  }
+  .intro{max-width:52ch; margin:1.25rem 0 0; color:var(--ink)}
+
+  /* ---- row grid ---- */
+  .row{
+    display:grid; grid-template-columns:9.5rem minmax(0,1fr);
+    gap:0 2rem; padding:1.5rem 0; border-top:1px solid var(--rule);
+    align-items:start;
+  }
+  .row:first-of-type{margin-top:2.5rem}
+  .label{
+    font-family:var(--mono); font-size:0.72rem; text-transform:uppercase;
+    letter-spacing:0.11em; color:var(--muted); padding-top:0.25rem; margin:0;
+  }
+  .row > div > :first-child{margin-top:0}
+  .row > div > :last-child{margin-bottom:0}
+
+  /* ---- line items ---- */
+  .item{padding:0 0 1.25rem}
+  .item:last-child{padding-bottom:0}
+  .item h3{font-size:0.9375rem; font-weight:620; margin:0; letter-spacing:-0.005em}
+  .item .when{font-family:var(--mono); font-size:0.8125rem; color:var(--muted); margin:0.1rem 0 0.4rem}
+  .item p{margin:0; max-width:56ch; color:#2C302E}
+  .tags{
+    margin:0.55rem 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap;
+    gap:0.3rem 0.85rem; font-family:var(--mono); font-size:0.75rem; color:var(--muted);
+  }
+
+  /* ---- inline definition list ---- */
+  .dl{margin:0; display:grid; grid-template-columns:1fr auto; gap:0}
+  .dl dt{padding:0.45rem 0; border-top:1px solid var(--rule); font-size:0.9375rem}
+  .dl dd{padding:0.45rem 0; border-top:1px solid var(--rule); margin:0; font-family:var(--mono); font-size:0.78rem; color:var(--muted); text-align:right; white-space:nowrap}
+  .dl dt:first-of-type, .dl dd:first-of-type{border-top:0; padding-top:0}
+
+  .note{font-size:0.8125rem; color:var(--muted); max-width:56ch; margin:0.9rem 0 0}
+  .skillset{margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 1.1rem; font-size:0.875rem}
+  .skillset li{color:#2C302E}
+  .skillset li.dim{color:var(--muted)}
+
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid currentColor}
+  a:hover{color:var(--ink)}
+  a:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+  .links{display:flex; flex-wrap:wrap; gap:0.6rem 1.75rem; font-family:var(--mono); font-size:0.8125rem}
+
+  @media (max-width:40rem){
+    .row{grid-template-columns:1fr; gap:0.6rem 0}
+    .label{padding-top:0}
+    .dl{grid-template-columns:1fr}
+    .dl dd{text-align:left; border-top:0; padding-top:0}
+    .dl dt{padding-bottom:0.15rem}
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--paper:#0C0E0D; --ink:#E8ECEA; --muted:#828A87; --rule:#232725; --accent:#5FBFA4}
+    .item p{color:#BFC6C3}
+    .skillset li{color:#BFC6C3}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div>
+      <h1>Faisal Almuhaini</h1>
+      <p class="role">AI Engineer · Machine learning in production environments</p>
+    </div>
+    <p class="status">Open to roles — Jeddah</p>
+  </div>
+
+  <p class="intro">
+    I work where models meet infrastructure: offline servers, legacy SDKs,
+    and systems that have to keep running when the network doesn't.
+  </p>
+
+  <section class="row">
+    <p class="label">Now</p>
+    <div>
+      <div class="item">
+        <h3>AI &amp; Data Analytics · 2P</h3>
+        <p class="when">Nov 2025 — present · Jeddah</p>
+        <p>
+          Computer-vision inference, REST integration, and operational
+          dashboards across a large surveillance deployment. Windows Server,
+          restricted network, no room for a dependency you can't vendor.
+        </p>
+      </div>
+      <div class="item">
+        <h3>AI Cooperative Intern · Saudia</h3>
+        <p class="when">Jan — Mar 2025 · Jeddah</p>
+        <p>
+          Ticket-pricing analysis and regression modelling, Power BI reporting,
+          and requirements work inside an Agile analytics team.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="row">
+    <p class="label">Built</p>
+    <div>
+      <div class="item">
+        <h3>Camera cleanliness monitoring</h3>
+        <p class="when">Professional · active</p>
+        <p>
+          Detects degraded camera feeds — dust, rain, blur, obstruction — and
+          surfaces them as operational state. Lightweight classifier exported to
+          ONNX so the .NET scanner carries no Python runtime. Validation accuracy
+          0.76–0.88; uncertain predictions route to manual review rather than
+          auto-actioning.
+        </p>
+        <ul class="tags"><li>PyTorch</li><li>ONNX</li><li>ASP.NET Core 8</li><li>Laravel</li><li>MySQL</li></ul>
+      </div>
+      <div class="item">
+        <h3>Arabic sentiment classification</h3>
+        <p class="when">Academic · complete</p>
+        <p>AraBERT fine-tuned over ~58,000 tweets. Dialect variance and label disagreement were the real work.</p>
+        <ul class="tags"><li>AraBERT</li><li>Transformers</li></ul>
+      </div>
+      <div class="item">
+        <h3>Traffic signal control</h3>
+        <p class="when">Academic · complete</p>
+        <p>Detection feeding an RL controller, evaluated in SUMO. First reward function taught the agent to starve an approach entirely.</p>
+        <ul class="tags"><li>YOLO</li><li>SUMO</li></ul>
+      </div>
+      <div class="item">
+        <h3>Ticket classifier, containerised</h3>
+        <p class="when">Practice · builds and runs</p>
+        <p>Small end-to-end service with API, health check, tests and Dockerfile. Container practice, not a production system.</p>
+        <ul class="tags"><li>Docker</li><li>FastAPI</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="row">
+    <p class="label">Stack</p>
+    <div>
+      <ul class="skillset">
+        <li>Python</li><li>SQL</li><li>C#</li><li>PHP</li><li>PowerShell</li>
+        <li>PyTorch</li><li>scikit-learn</li><li>ONNX Runtime</li>
+        <li>ASP.NET Core</li><li>Laravel</li><li>MySQL</li>
+        <li>Docker</li><li>Power BI</li><li>Windows Server</li>
+        <li class="dim">Vertex AI</li><li class="dim">BigQuery</li><li class="dim">Kubernetes</li>
+      </ul>
+      <p class="note">Dimmed items are coursework and labs, not production use.</p>
+    </div>
+  </section>
+
+  <section class="row">
+    <p class="label">Credentials</p>
+    <div>
+      <dl class="dl">
+        <dt>Laravel &amp; PHP — Board Infinity</dt><dd>2026 · applied</dd>
+        <dt>Containers, Kubernetes &amp; OpenShift — IBM</dt><dd>2026 · applied</dd>
+        <dt>MLOps on Google Cloud — Specialization</dt><dd>2026 · labs</dd>
+        <dt>ML in Production — DeepLearning.AI</dt><dd>2026 · labs</dd>
+        <dt>AI Specialist — Saudi Council of Engineers</dt><dd>2025</dd>
+        <dt>BSc Artificial Intelligence — Univ. of Jeddah</dt><dd>2025</dd>
+      </dl>
+      <p class="note">Marked <em>applied</em> where I have shipped something with it, <em>labs</em> where I haven't.</p>
+    </div>
+  </section>
+
+  <section class="row">
+    <p class="label">Contact</p>
+    <div class="links">
+      <a href="#">faisal_almuhaini@hotmail.com</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">GitHub</a>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

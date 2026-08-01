@@ -1,0 +1,21 @@
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+*.code-workspace
+
+# Claude Code local overrides (keep CLAUDE.md tracked, ignore personal ones)
+CLAUDE.local.md
+.claude/settings.local.json
+
+# Build output, if ever added
+dist/
+build/
+
+# Never commit
+.env
+*.pem
+*.key

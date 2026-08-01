@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<!--
+  MOCKUP C — "Quiet"
+  ============================================================
+  Reference: Samantha Keely Smith (painter portfolio).
+
+  WHAT WAS BORROWED
+  - A narrow fixed left column holding *everything* — identity,
+    navigation, and the caption for whatever is on screen.
+  - A very large content field that the chrome never competes with.
+  - Lowercase, small, grey navigation. Black only for the active item.
+  - Pure white. No rules, no borders, no cards, no shadows anywhere.
+  - Caption pinned to the bottom of the sidebar, small and factual.
+
+  WHAT CHANGED FOR AN ENGINEER
+  A painter fills the field with a painting. I have no artwork, so
+  the field holds one idea at a time, set large with a lot of air
+  around it. Restraint replaces imagery. The work index is a sparse
+  list, not a grid of cards.
+
+  TYPE
+    identity   1.3125rem  serif, caps, tracked +0.02em, lh 1.15
+    descriptor 0.9375rem  serif italic
+    nav        0.8125rem  sans, lowercase
+    statement  clamp(1.375rem, 1.05rem + 1.4vw, 2rem) serif, lh 1.4
+    body       0.9375rem  sans, lh 1.75
+    caption    0.75rem    sans
+
+  COLOUR
+    #FFFFFF paper · #0A0A0A ink · #9A9A9A muted · #C8C8C8 faint
+
+  MOTION  (per Emil Kowalski's framework)
+    Navigation is used often, so it barely animates: colour only,
+    120ms ease, gated behind a hover media query.
+    View changes are occasional, so they get 220ms opacity + 6px
+    rise on a strong ease-out curve. Nothing scales from zero.
+    All motion removed under prefers-reduced-motion.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faisal Almuhaini</title>
+<style>
+  :root{
+    --paper:#FFFFFF; --ink:#0A0A0A; --muted:#9A9A9A; --faint:#C8C8C8;
+    --serif: ui-serif, Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --pad-y: clamp(2.5rem, 4vw, 2.75rem);
+    --pad-x: clamp(1.75rem, 3.2vw, 3rem);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:0.9375rem; line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ═══ sidebar ═══ */
+  .sidebar{
+    position:fixed; inset:0 auto 0 0; width:15.5rem;
+    padding:var(--pad-y) 1.5rem var(--pad-y) var(--pad-x);
+    display:flex; flex-direction:column;
+  }
+  .identity{
+    font-family:var(--serif); font-size:1.3125rem; font-weight:500;
+    text-transform:uppercase; letter-spacing:0.02em; line-height:1.15;
+    margin:0;
+  }
+  .descriptor{
+    font-family:var(--serif); font-style:italic; font-size:0.9375rem;
+    color:var(--ink); margin:0.55rem 0 0; line-height:1.3;
+  }
+
+  nav{margin-top:2.75rem}
+  .navgroup{list-style:none; margin:0 0 1.4rem; padding:0}
+  .navgroup:last-child{margin-bottom:0}
+  .navgroup a{
+    display:block; padding:0.155rem 0;
+    font-size:0.8125rem; color:var(--muted); text-decoration:none;
+    letter-spacing:0.005em;
+  }
+  .navgroup a[aria-current="page"]{color:var(--ink)}
+  @media (hover:hover) and (pointer:fine){
+    .navgroup a{transition:color 120ms ease}
+    .navgroup a:hover{color:var(--ink)}
+  }
+  .navgroup a:focus-visible{outline:1px solid var(--ink); outline-offset:3px}
+
+  .social{display:flex; gap:0.85rem; margin-top:1.9rem}
+  .social a{color:var(--faint); line-height:0; text-decoration:none}
+  @media (hover:hover) and (pointer:fine){
+    .social a{transition:color 120ms ease}
+    .social a:hover{color:var(--ink)}
+  }
+  .social svg{width:13px; height:13px; display:block}
+
+  .caption{margin-top:auto; padding-top:2rem}
+  .caption strong{display:block; font-size:0.8125rem; font-weight:600; line-height:1.4}
+  .caption span{display:block; font-size:0.75rem; color:var(--muted); line-height:1.5; margin-top:0.15rem}
+
+  /* ═══ field ═══ */
+  main{
+    margin-left:15.5rem; padding:var(--pad-y) var(--pad-x) 6rem;
+    min-height:100vh;
+  }
+  .view{display:none}
+  .view[data-active]{display:block; animation:rise 220ms var(--ease-out) both}
+  @keyframes rise{
+    from{opacity:0; transform:translateY(6px)}
+    to{opacity:1; transform:translateY(0)}
+  }
+
+  .statement{
+    font-family:var(--serif);
+    font-size:clamp(1.375rem, 1.05rem + 1.4vw, 2rem);
+    line-height:1.4; letter-spacing:-0.005em;
+    max-width:30ch; margin:0;
+  }
+  .statement + .statement{margin-top:1.6rem}
+  .lede{max-width:46ch; color:var(--ink); margin:3.5rem 0 0}
+
+  /* work index */
+  .index{list-style:none; margin:0; padding:0; max-width:44rem}
+  .index li{margin:0 0 2.6rem}
+  .index li:last-child{margin-bottom:0}
+  .index h2{
+    font-family:var(--serif); font-size:1.25rem; font-weight:500;
+    margin:0; line-height:1.3; letter-spacing:-0.005em;
+  }
+  .index .meta{font-size:0.75rem; color:var(--muted); margin:0.3rem 0 0.55rem}
+  .index p{margin:0; max-width:52ch; color:#3A3A3A}
+  .index button{
+    all:unset; cursor:pointer; display:block;
+  }
+  .index button:focus-visible{outline:1px solid var(--ink); outline-offset:6px}
+  @media (hover:hover) and (pointer:fine){
+    .index h2{transition:opacity 120ms ease}
+    .index button:hover h2{opacity:0.55}
+  }
+
+  /* case study */
+  .case h1{
+    font-family:var(--serif); font-size:clamp(1.5rem,1.2rem + 1.1vw,1.875rem);
+    font-weight:500; margin:0; line-height:1.25; letter-spacing:-0.01em;
+  }
+  .case .meta{font-size:0.75rem; color:var(--muted); margin:0.45rem 0 0}
+  .case-body{max-width:52ch; margin-top:2.75rem}
+  .case-body p{margin:0 0 1.5rem}
+  .case-body p:last-child{margin-bottom:0}
+  .case-body h3{
+    font-size:0.75rem; font-weight:600; text-transform:uppercase;
+    letter-spacing:0.09em; color:var(--muted); margin:3rem 0 0.85rem;
+  }
+  .back{
+    all:unset; cursor:pointer; font-size:0.75rem; color:var(--muted);
+    margin-bottom:2.25rem; display:inline-block;
+  }
+  @media (hover:hover) and (pointer:fine){
+    .back{transition:color 120ms ease}
+    .back:hover{color:var(--ink)}
+  }
+  .back:focus-visible{outline:1px solid var(--ink); outline-offset:4px}
+
+  /* about + credentials */
+  .prose{max-width:52ch}
+  .prose p{margin:0 0 1.5rem}
+  .prose p:last-child{margin-bottom:0}
+  .creds{list-style:none; margin:0; padding:0; max-width:34rem}
+  .creds li{
+    display:flex; justify-content:space-between; gap:2rem;
+    padding:0.62rem 0; font-size:0.875rem;
+  }
+  .creds li span:last-child{color:var(--muted); font-size:0.75rem; white-space:nowrap; padding-top:0.2rem}
+  .footnote{font-size:0.8125rem; color:var(--muted); max-width:46ch; margin:2rem 0 0}
+
+  .contact-list{list-style:none; margin:0; padding:0}
+  .contact-list li{margin:0 0 0.5rem}
+  .contact-list a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--faint); padding-bottom:1px}
+  @media (hover:hover) and (pointer:fine){
+    .contact-list a{transition:border-color 120ms ease}
+    .contact-list a:hover{border-bottom-color:var(--ink)}
+  }
+  .contact-list a:focus-visible{outline:1px solid var(--ink); outline-offset:3px}
+
+  /* ═══ responsive ═══ */
+  @media (max-width:60rem){
+    .sidebar{position:static; width:auto; padding-bottom:0}
+    .caption{display:none}
+    main{margin-left:0; padding-top:2.5rem}
+    nav{margin-top:2rem}
+    .navgroup{display:flex; flex-wrap:wrap; gap:0 1.1rem; margin-bottom:0.35rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important; transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <h1 class="identity">Faisal<br>Almuhaini</h1>
+  <p class="descriptor">ai engineer</p>
+
+  <nav aria-label="Primary">
+    <ul class="navgroup">
+      <li><a href="#" data-go="home" aria-current="page">index</a></li>
+      <li><a href="#" data-go="work">work</a></li>
+    </ul>
+    <ul class="navgroup">
+      <li><a href="#" data-go="about">about</a></li>
+      <li><a href="#" data-go="credentials">credentials</a></li>
+      <li><a href="#" data-go="contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="social">
+    <a href="#" aria-label="GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg></a>
+    <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 1.6a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2ZM2.2 6h2.8v8H2.2V6Zm4.6 0h2.7v1.1h.04c.38-.7 1.3-1.4 2.66-1.4 2.85 0 3.38 1.8 3.38 4.2V14h-2.8v-3.6c0-.86-.02-1.96-1.24-1.96-1.24 0-1.43.94-1.43 1.9V14H6.8V6Z"/></svg></a>
+  </div>
+
+  <div class="caption">
+    <strong id="cap-title">Index</strong>
+    <span id="cap-sub">Jeddah, Saudi Arabia</span>
+  </div>
+</aside>
+
+<main>
+
+  <!-- ── index ── -->
+  <section class="view" data-view="home" data-active>
+    <p class="statement">I build machine-learning systems that have to survive contact with real infrastructure.</p>
+    <p class="statement">Offline servers, legacy SDKs, and operators who need an answer rather than a probability.</p>
+    <p class="lede">Currently working on computer vision and integration for a large surveillance deployment. Previously analytics at Saudia. BSc in Artificial Intelligence, University of Jeddah.</p>
+  </section>
+
+  <!-- ── work ── -->
+  <section class="view" data-view="work">
+    <ul class="index">
+      <li><button data-go="case-camera">
+        <h2>Camera cleanliness monitoring</h2>
+        <p class="meta">2025 — present · professional</p>
+        <p>Detecting degraded camera feeds across a large deployment, and turning a model score into something an operator can act on.</p>
+      </button></li>
+      <li><button data-go="case-arabic">
+        <h2>Arabic sentiment classification</h2>
+        <p class="meta">2025 · academic</p>
+        <p>AraBERT fine-tuned over roughly 58,000 tweets, where dialect variance mattered more than architecture.</p>
+      </button></li>
+      <li><button data-go="case-traffic">
+        <h2>Traffic signal control</h2>
+        <p class="meta">2025 · academic</p>
+        <p>Reinforcement learning against a simulated intersection, and what a badly specified reward will happily do.</p>
+      </button></li>
+      <li><button data-go="case-docker">
+        <h2>Ticket classifier, containerised</h2>
+        <p class="meta">2026 · practice</p>
+        <p>A deliberately small end-to-end service, built to put container fundamentals into practice.</p>
+      </button></li>
+    </ul>
+  </section>
+
+  <!-- ── case: camera ── -->
+  <section class="view case" data-view="case-camera">
+    <button class="back" data-go="work">← work</button>
+    <h1>Camera cleanliness monitoring</h1>
+    <p class="meta">2025 — present · computer vision, integration · professional</p>
+    <div class="case-body">
+      <p>A large surveillance deployment had no way to know which of its cameras had degraded. Dust, rain, blur, obstruction — finding out meant a person opening feeds one at a time.</p>
+      <p>I built the system that answers it automatically. Frames are pulled from the VMS, classified on-server, and surfaced as operational state rather than raw model output.</p>
+
+      <h3>The constraint that shaped it</h3>
+      <p>The inference server has no internet access and modest CPU. I trained a lightweight classifier and exported it to ONNX rather than shipping a Python runtime — the .NET scanner loads a single file and has no dependency chain to vendor onto an offline machine.</p>
+
+      <h3>What the numbers actually say</h3>
+      <p>Validation accuracy landed between 0.76 and 0.88 across runs. That spread is the honest figure, and it is the reason uncertain predictions route to manual review instead of being auto-actioned.</p>
+      <p>Frames were grouped by source video before splitting. Near-duplicate frames either side of a split will invent accuracy that isn't there.</p>
+
+      <h3>Built with</h3>
+      <p>PyTorch · ONNX Runtime · ASP.NET Core 8 · Laravel · MySQL · Windows Server</p>
+    </div>
+  </section>
+
+  <!-- ── case: arabic ── -->
+  <section class="view case" data-view="case-arabic">
+    <button class="back" data-go="work">← work</button>
+    <h1>Arabic sentiment classification</h1>
+    <p class="meta">2025 · natural language processing · academic</p>
+    <div class="case-body">
+      <p>Fine-tuned AraBERT over roughly 58,000 tweets.</p>
+      <p>Most of the work was not modelling. It was dialect variance, inconsistent normalisation, and deciding what counted as a label when annotators disagreed — which they did, often, and not randomly.</p>
+      <h3>Built with</h3>
+      <p>AraBERT · PyTorch · Transformers</p>
+    </div>
+  </section>
+
+  <!-- ── case: traffic ── -->
+  <section class="view case" data-view="case-traffic">
+    <button class="back" data-go="work">← work</button>
+    <h1>Traffic signal control</h1>
+    <p class="meta">2025 · reinforcement learning · academic</p>
+    <div class="case-body">
+      <p>Object detection feeding a reinforcement-learning controller, evaluated in SUMO.</p>
+      <p>Useful mainly for what it taught me about reward design. The first agent learned to starve one approach indefinitely, because throughput was the only thing I measured. It was optimising exactly what I asked for.</p>
+      <h3>Built with</h3>
+      <p>YOLO · SUMO · Python</p>
+    </div>
+  </section>
+
+  <!-- ── case: docker ── -->
+  <section class="view case" data-view="case-docker">
+    <button class="back" data-go="work">← work</button>
+    <h1>Ticket classifier, containerised</h1>
+    <p class="meta">2026 · practice project</p>
+    <div class="case-body">
+      <p>A deliberately small end-to-end service — model, prediction API, health check, tests, Dockerfile — built to put container fundamentals into practice rather than leave them at certificate level.</p>
+      <p>It builds and it runs. It is not a production system and I don't present it as one.</p>
+      <h3>Built with</h3>
+      <p>Docker · FastAPI · scikit-learn</p>
+    </div>
+  </section>
+
+  <!-- ── about ── -->
+  <section class="view" data-view="about">
+    <div class="prose">
+      <p>I studied Artificial Intelligence at the University of Jeddah and graduated in 2025. Since then I've worked where models meet infrastructure — which in practice means Windows Server, restricted networks, and SDK versions that were frozen years ago.</p>
+      <p>That constraint has shaped how I work more than any course did. When you can't reach the internet from the deployment machine, you learn to care about what a dependency actually costs.</p>
+      <p>I write things down. Architecture, decisions, what broke and why. Partly for whoever inherits the system, partly because writing it down is how I find out whether I understood it.</p>
+      <p>Arabic is my first language. I work in English.</p>
+    </div>
+  </section>
+
+  <!-- ── credentials ── -->
+  <section class="view" data-view="credentials">
+    <ul class="creds">
+      <li><span>BSc Artificial Intelligence — University of Jeddah</span><span>2025</span></li>
+      <li><span>Laravel &amp; PHP — Board Infinity</span><span>2026 · applied</span></li>
+      <li><span>Containers, Kubernetes &amp; OpenShift — IBM</span><span>2026 · applied</span></li>
+      <li><span>MLOps on Google Cloud — Specialization</span><span>2026 · labs</span></li>
+      <li><span>Machine Learning in Production — DeepLearning.AI</span><span>2026 · labs</span></li>
+      <li><span>AI Specialist — Saudi Council of Engineers</span><span>2025</span></li>
+    </ul>
+    <p class="footnote">Marked <em>applied</em> where I have shipped something with it and <em>labs</em> where I haven't. The distinction seems worth keeping.</p>
+  </section>
+
+  <!-- ── contact ── -->
+  <section class="view" data-view="contact">
+    <ul class="contact-list">
+      <li><a href="mailto:faisal_almuhaini@hotmail.com">faisal_almuhaini@hotmail.com</a></li>
+      <li><a href="#">linkedin</a></li>
+      <li><a href="#">github</a></li>
+    </ul>
+    <p class="footnote">Based in Jeddah. Open to on-site and hybrid roles in Saudi Arabia.</p>
+  </section>
+
+</main>
+
+<script>
+  const CAPTIONS = {
+    home:          ["Index", "Jeddah, Saudi Arabia"],
+    work:          ["Work", "Four selected projects"],
+    "case-camera": ["Camera cleanliness monitoring", "Computer vision, integration — 2025 to present"],
+    "case-arabic": ["Arabic sentiment classification", "AraBERT, ~58,000 tweets — 2025"],
+    "case-traffic":["Traffic signal control", "Reinforcement learning, SUMO — 2025"],
+    "case-docker": ["Ticket classifier, containerised", "Docker practice project — 2026"],
+    about:         ["About", "Jeddah, Saudi Arabia"],
+    credentials:   ["Credentials", "Degree and certifications"],
+    contact:       ["Contact", "Open to roles"]
+  };
+  const NAV_FOR = { "case-camera":"work","case-arabic":"work","case-traffic":"work","case-docker":"work" };
+
+  const views = document.querySelectorAll("[data-view]");
+  const navLinks = document.querySelectorAll(".navgroup a");
+  const capTitle = document.getElementById("cap-title");
+  const capSub = document.getElementById("cap-sub");
+
+  function go(name){
+    views.forEach(v => v.toggleAttribute("data-active", v.dataset.view === name));
+    const active = NAV_FOR[name] || name;
+    navLinks.forEach(a =>
+      a.dataset.go === active ? a.setAttribute("aria-current","page") : a.removeAttribute("aria-current")
+    );
+    const [t, s] = CAPTIONS[name] || ["",""];
+    capTitle.textContent = t; capSub.textContent = s;
+    window.scrollTo(0, 0);
+  }
+
+  document.addEventListener("click", e => {
+    const el = e.target.closest("[data-go]");
+    if(!el) return;
+    e.preventDefault();
+    go(el.dataset.go);
+  });
+</script>
+</body>
+</html>
