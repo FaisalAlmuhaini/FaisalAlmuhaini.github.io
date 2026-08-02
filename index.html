@@ -14,6 +14,7 @@
  
 <!-- SIDEBAR — keep identical across all pages -->
 <aside class="sidebar">
+  <img class="portrait" src="images/portrait.png" alt="Portrait of Faisal Almuhaini">
   <h1 class="identity">Faisal<br>Almuhaini</h1>
   <p class="descriptor">ai engineer</p>
 
@@ -29,10 +30,6 @@
     </ul>
   </nav>
 
-  <div class="social">
-    <a href="https://www.linkedin.com/in/faisal-almuhaini" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 1.6a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2ZM2.2 6h2.8v8H2.2V6Zm4.6 0h2.7v1.1h.04c.38-.7 1.3-1.4 2.66-1.4 2.85 0 3.38 1.8 3.38 4.2V14h-2.8v-3.6c0-.86-.02-1.96-1.24-1.96-1.24 0-1.43.94-1.43 1.9V14H6.8V6Z"/></svg></a>
-  </div>
-
   <div class="caption">
     <strong id="cap-title">Home</strong>
     <span id="cap-sub">Jeddah, Saudi Arabia</span>
@@ -45,50 +42,62 @@
   <!-- ── home ── -->
   <section class="view" data-view="home" data-active>
     <p class="statement">I build machine-learning systems that have to survive contact with real infrastructure.</p>
-    <p class="statement">No internet on the deployment box, no dependency I can't explain, no metric I can't defend.</p>
+    <p class="statement">I'd rather hand you an honest number than an impressive one.</p>
 
     <ul class="experience">
       <li>
         <div class="exp-role">AI Engineer</div>
         <p class="meta">2P (Perfect Presentation) · Nov 2025 — present</p>
-        <p>Computer vision and system integration for a large-scale public-safety operations deployment — camera-health monitoring, offline inference, and the dashboards operators actually use.</p>
+        <p>Computer vision and system integration for a large-scale public-safety operations deployment — camera-health monitoring, offline inference, endpoint management, and the dashboards operators actually use.</p>
+        <a class="case-link" href="case-2p.html">full case study →</a>
       </li>
       <li>
-        <div class="exp-role">AI Co-op Intern</div>
+        <div class="exp-head">
+          <div class="exp-role">AI Co-op Intern</div>
+          <button class="creds-thumb" aria-label="Enlarge: letter of recommendation from Faisal's supervisor at Saudia">
+            <img src="images/credentials/recommendation-letter.jpg" alt="Letter of recommendation from Faisal's supervisor at Saudia">
+          </button>
+        </div>
         <p class="meta">Saudia · Jan 2025 — Mar 2025</p>
-        <p>Ticket-pricing analytics and a deployed price-prediction tool for the Advanced Data Analytics division, plus Power BI reporting and BRD work that earned a recommendation letter.</p>
+        <p>Ticket-pricing analytics and a deployed price-prediction tool for the Advanced Data Analytics division, plus Power BI reporting and BRD work that earned the recommendation letter beside this.</p>
+        <a class="case-link" href="case-saudia.html">full case study →</a>
       </li>
     </ul>
   </section>
 
   <!-- ── work ── -->
   <section class="view" data-view="work">
-    <p class="work-lede">Five projects: two professional, three built to learn something specific. Each one links through to how it actually went, including the parts that didn't.</p>
+    <p class="work-lede">Six projects, strongest first. Each one links through to how it actually went, including the parts that didn't.</p>
     <ul class="index">
       <li><a href="case-camera.html">
         <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.5-2.5h5L16 7"/><circle cx="12" cy="13.5" r="3.5"/></svg>Camera cleanliness monitoring</h2>
         <p class="meta">2025 — present · professional</p>
         <p>Detecting degraded camera feeds across a large deployment, and turning a model score into something an operator can act on. Runs on an offline inference server — a lightweight classifier exported to ONNX and loaded by a single .NET service with no runtime to vendor.</p>
       </a></li>
+      <li><a href="case-traffic.html">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>Traffic Light Management System Using CNN</h2>
+        <p class="meta">2024 · graduation project</p>
+        <p>Replacing a fixed signal cycle with one that reads how many cars are actually waiting. The interesting number was recall — the baseline detector was missing half the vehicles, and in a counting system that becomes wrong timing.</p>
+      </a></li>
       <li><a href="case-arabic.html">
         <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v10H9l-4 4V5z"/></svg>Arabic sentiment classification</h2>
         <p class="meta">2025 · academic</p>
         <p>AraBERT fine-tuned over roughly 58,000 tweets, where dialect variance mattered more than architecture. The harder part wasn't the model — it was dialect variance and label disagreement that wasn't random.</p>
-      </a></li>
-      <li><a href="case-traffic.html">
-        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>Traffic signal control</h2>
-        <p class="meta">2024 · graduation project</p>
-        <p>Replacing a fixed signal cycle with one that reads how many cars are actually waiting. The interesting number was recall — the baseline detector was missing half the vehicles, and in a counting system that becomes wrong timing.</p>
       </a></li>
       <li><a href="case-docker.html">
         <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5L12 12l8-4.5M12 12v9"/></svg>Ticket classifier, containerised</h2>
         <p class="meta">2026 — practice</p>
         <p>A deliberately small end-to-end service, built to put container fundamentals into practice. It builds and runs — it is not a production system, and it isn't presented as one.</p>
       </a></li>
-      <li><a href="case-saudia.html">
-        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 16l5-6 4 4 4-8 5 7"/><circle cx="19" cy="6" r="1.5"/></svg>Saudia analytics internship</h2>
-        <p class="meta">2025 · Power Apps, NLP prototype · internship</p>
-        <p>A price-prediction tool shipped inside a Power App, a price-drop notification concept built with a team, and a CV-skills classifier prototype for HR — plus the analytics and reporting work that earned a recommendation letter.</p>
+      <li><a href="case-hajj-db.html">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>Hajj organisation database</h2>
+        <p class="meta">2023 · academic</p>
+        <p>Designing the relational backbone for a large seasonal event before writing a line of application code — ER modelling, normalisation, and the stored procedures that enforce the rules a UI can't be trusted to.</p>
+      </a></li>
+      <li><a href="case-morphing.html">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="9" r="5"/><circle cx="16" cy="15" r="5"/></svg>Image enhancement through morphing</h2>
+        <p class="meta">2023 · academic</p>
+        <p>Classic computer vision without a neural net: denoising, alpha blending, and frame-sequence generation to morph one image into another, at a point in the degree before deep learning took over every answer.</p>
       </a></li>
     </ul>
   </section>
@@ -134,19 +143,19 @@
         <button class="creds-thumb" aria-label="Enlarge: BSc Artificial Intelligence certificate">
           <img src="images/credentials/uoj.jpg" alt="University of Jeddah, Bachelor of Science in Artificial Intelligence certificate">
         </button>
-        <span class="creds-text"><span>BSc Artificial Intelligence — University of Jeddah</span><span>2025</span></span>
+        <span class="creds-text"><span>BSc Artificial Intelligence — University of Jeddah</span><span>2025 · degree</span></span>
       </li>
       <li>
-        <button class="creds-thumb" aria-label="Enlarge: Laravel and PHP certificate">
-          <img src="images/credentials/laravel-php.jpg" alt="Laravel and PHP certificate, Board Infinity">
+        <button class="creds-thumb" aria-label="Enlarge: AI Specialist certificate">
+          <img src="images/credentials/ai-specialist-sce.jpg" alt="AI Specialist certificate, Saudi Council of Engineers">
         </button>
-        <span class="creds-text"><span>Laravel &amp; PHP — Board Infinity</span><span>2026 · applied</span></span>
+        <span class="creds-text"><span>AI Specialist — Saudi Council of Engineers</span><span>2025 · license</span></span>
       </li>
       <li>
-        <button class="creds-thumb" aria-label="Enlarge: Containers, Kubernetes and OpenShift certificate">
-          <img src="images/credentials/containers-ibm.jpg" alt="Containers, Kubernetes and OpenShift certificate, IBM">
+        <button class="creds-thumb" aria-label="Enlarge: Cooperative Training Program certificate, Saudia">
+          <img src="images/credentials/saudia-coop.jpg" alt="Cooperative Training Program certificate, Saudia">
         </button>
-        <span class="creds-text"><span>Containers, Kubernetes &amp; OpenShift — IBM</span><span>2026 · applied</span></span>
+        <span class="creds-text"><span>Cooperative Training Program — Saudia</span><span>2025 · internship</span></span>
       </li>
       <li>
         <button class="creds-thumb" aria-label="Enlarge: MLOps on Google Cloud specialization certificate">
@@ -155,16 +164,22 @@
         <span class="creds-text"><span>MLOps on Google Cloud — Specialization</span><span>2026 · labs</span></span>
       </li>
       <li>
+        <button class="creds-thumb" aria-label="Enlarge: Containers, Kubernetes and OpenShift certificate">
+          <img src="images/credentials/containers-ibm.jpg" alt="Containers, Kubernetes and OpenShift certificate, IBM">
+        </button>
+        <span class="creds-text"><span>Containers, Kubernetes &amp; OpenShift — IBM</span><span>2026 · applied</span></span>
+      </li>
+      <li>
         <button class="creds-thumb" aria-label="Enlarge: Machine Learning in Production certificate">
           <img src="images/credentials/mlp-deeplearning.jpg" alt="Machine Learning in Production certificate, DeepLearning.AI">
         </button>
-        <span class="creds-text"><span>Machine Learning in Production — DeepLearning.AI</span><span>2026 · labs</span></span>
+        <span class="creds-text"><span>Machine Learning in Production — DeepLearning.AI</span><span>2026 · applied</span></span>
       </li>
       <li>
-        <button class="creds-thumb" aria-label="Enlarge: AI Specialist certificate">
-          <img src="images/credentials/ai-specialist-sce.jpg" alt="AI Specialist certificate, Saudi Council of Engineers">
+        <button class="creds-thumb" aria-label="Enlarge: Laravel and PHP certificate">
+          <img src="images/credentials/laravel-php.jpg" alt="Laravel and PHP certificate, Board Infinity">
         </button>
-        <span class="creds-text"><span>AI Specialist — Saudi Council of Engineers</span><span>2025</span></span>
+        <span class="creds-text"><span>Laravel &amp; PHP — Board Infinity</span><span>2026 · applied</span></span>
       </li>
     </ul>
     <p class="footnote">Marked <em>applied</em> where I have shipped something with it and <em>labs</em> where I haven't. The distinction seems worth keeping.</p>
@@ -173,9 +188,9 @@
   <!-- ── contact ── -->
   <section class="view" data-view="contact">
     <ul class="contact-list">
-      <li><a href="mailto:faisal_almuhaini@hotmail.com">faisal_almuhaini@hotmail.com</a></li>
-      <li><a href="tel:+966560644854">+966 56 064 4854</a></li>
-      <li><a href="https://www.linkedin.com/in/faisal-almuhaini" target="_blank" rel="noopener">linkedin</a></li>
+      <li><a href="mailto:faisal_almuhaini@hotmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg><span>faisal_almuhaini@hotmail.com</span></a></li>
+      <li><a href="tel:+966560644854"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg><span>+966 56 064 4854</span></a></li>
+      <li><a href="https://www.linkedin.com/in/faisal-almuhaini" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 1.6a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2ZM2.2 6h2.8v8H2.2V6Zm4.6 0h2.7v1.1h.04c.38-.7 1.3-1.4 2.66-1.4 2.85 0 3.38 1.8 3.38 4.2V14h-2.8v-3.6c0-.86-.02-1.96-1.24-1.96-1.24 0-1.43.94-1.43 1.9V14H6.8V6Z"/></svg><span>linkedin</span></a></li>
     </ul>
     <p class="footnote">Based in Jeddah. Open to on-site and hybrid roles in Saudi Arabia.</p>
   </section>

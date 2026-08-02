@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2P — AI Engineer — Faisal Almuhaini</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SIDEBAR — keep identical across all pages -->
+<aside class="sidebar">
+  <img class="portrait" src="images/portrait.png" alt="Portrait of Faisal Almuhaini">
+  <h1 class="identity">Faisal<br>Almuhaini</h1>
+  <p class="descriptor">ai engineer</p>
+
+  <nav aria-label="Primary">
+    <ul class="navgroup">
+      <li><a href="index.html#home" aria-current="page">home</a></li>
+      <li><a href="index.html#work">work</a></li>
+    </ul>
+    <ul class="navgroup">
+      <li><a href="index.html#about">about</a></li>
+      <li><a href="index.html#credentials">credentials</a></li>
+      <li><a href="index.html#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="caption">
+    <strong id="cap-title">2P — AI Engineer</strong>
+    <span id="cap-sub">Nov 2025 — present</span>
+  </div>
+</aside>
+<!-- /SIDEBAR -->
+
+<main>
+  <section class="view case" data-view="case-2p" data-active>
+    <a class="back" href="index.html#home">← home</a>
+    <h1>2P — AI Engineer</h1>
+    <p class="meta">Nov 2025 — present · computer vision · infrastructure · professional</p>
+    <div class="case-body">
+      <p>Current role, on a large-scale public-safety operations deployment. The work sits at the join between AI and IT infrastructure — building the model-driven parts of the system and keeping the surrounding Windows and network environment running, in an environment with no internet access and version constraints that don't move on their own schedule.</p>
+
+      <h3>Camera cleanliness monitoring</h3>
+      <p>The strongest technical work in this role: detecting degraded camera feeds across a large deployment and turning a model score into something an operator can act on, running end to end on an offline inference server. Full write-up in <a href="case-camera.html">work</a>.</p>
+
+      <h3>Asset tracking, self-hosted</h3>
+      <p>Deployed Snipe-IT locally on Windows to get a working asset-tracking system in place — XAMPP, Apache, PHP, Composer, and MySQL, with Laravel underneath. Getting there meant working through a real chain of deployment failures: Composer dependency mismatches, missing PHP extensions, OpenSSL and <code>libcurl.dll</code> issues, Apache not starting, an incomplete <code>.env</code>, an invalid Laravel cipher, MySQL permission errors, and migrations that didn't apply cleanly the first time. The deployment is complete and functional for local asset tracking.</p>
+
+      <h3>Device and endpoint management</h3>
+      <p>Kaspersky Security Center work — endpoint and network-agent deployment, remote commands, time synchronisation, silent installation, device inventory, and Windows service troubleshooting. Any rollout follows the same shape regardless of the task: confirm the requirement, build a non-destructive test, run it on one device, capture logs and exit codes, pilot a small group, define a rollback before going further, deploy in stages, verify centrally, and document exceptions. Internal inventories and security-policy detail stay off this page by design.</p>
+
+      <h3>A secure QR asset-lookup concept</h3>
+      <p>A proposal, not a shipped system: attach a unique QR code to every physical asset so an authorised user or device can view current information, with unauthorised access hitting a controlled denial page instead. The design principles — opaque non-sequential identifiers, HTTPS only, least privilege and rate limiting, no confidential detail embedded in the code itself — are worked out. Implementation is not.</p>
+
+      <h3>Built with</h3>
+      <p>C# · ASP.NET Core 8 · PyTorch · ONNX Runtime · Laravel · PHP · MySQL · PowerShell · Milestone XProtect · Kaspersky Security Center · Windows Server</p>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
