@@ -44,8 +44,20 @@
 
       <h3>The metric that mattered</h3>
       <p>Recall, not accuracy. The baseline detector scored 0.45 recall — it was missing roughly half of all vehicles. In a system that allocates green time by counting cars, every missed detection becomes wrong timing. The trained model reached 0.90 recall and 0.92 precision, mAP@0.5 of 0.96.</p>
+      <figure class="case-figure">
+        <img class="case-img" src="images/case/traffic-detection.jpg" alt="Four YOLOv11 detection samples on night-time traffic footage, each vehicle boxed with a confidence score">
+        <figcaption class="case-caption">Detection output on the test set, including low-light and congested lanes.</figcaption>
+      </figure>
       <p>The count-to-timing rule is intentionally simple: a queue of 8 vehicles gets 20 seconds of green, a queue of 20 gets 30 — no learned policy, just a rule set driven directly off the detection count.</p>
+      <figure class="case-figure">
+        <img class="case-img" src="images/case/traffic-queue.jpg" alt="Queue manager output showing a bounded detection region, vehicle count, and the allocated green-light time for two traffic samples">
+        <figcaption class="case-caption">Queue manager: vehicle count inside the bounded region maps directly to green-light duration.</figcaption>
+      </figure>
       <p>Simulation only. It was never deployed to a real intersection, and the gap between a SUMO junction and a real one is not small.</p>
+      <figure class="case-figure">
+        <img class="case-img" src="images/case/traffic-sumo.jpg" alt="SUMO simulation of a four-way intersection with simulated vehicles queued at red lights">
+        <figcaption class="case-caption">The four-way SUMO intersection used as the test bed, mid-simulation.</figcaption>
+      </figure>
 
       <h3>What I actually worked on</h3>
       <p>All four pieces: training and evaluating the detector, the queue-manager and entry/exit counting logic, the four-way SUMO network and traffic scenarios, and the Streamlit interface that ties dataset, live prediction, and simulation together. It's the most end-to-end project in the academic portfolio — data through model through control logic through simulation through interface — though it was built with a team, not solo.</p>
