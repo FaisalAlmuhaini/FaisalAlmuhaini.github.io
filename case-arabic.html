@@ -42,8 +42,13 @@
     <h1>Arabic sentiment classification</h1>
     <p class="meta">2025 · natural language processing · academic</p>
     <div class="case-body">
-      <p>Fine-tuned AraBERT over roughly 58,000 tweets.</p>
-      <p>Most of the work was not modelling. It was dialect variance, inconsistent normalisation, and deciding what counted as a label when annotators disagreed — which they did, often, and not randomly.</p>
+      <p>Fine-tuned AraBERT over roughly 58,000 tweets, benchmarked against a knowledge-based lexicon baseline to check whether the added complexity was actually justified.</p>
+      <p>Most of the work was not modelling. It was dialect variance, inconsistent normalisation, and deciding what counted as a label when annotators disagreed — which they did, often, and not randomly. Arabic has no capitalisation and heavy inflection, so the orthographic shortcuts that help in English aren't available here.</p>
+
+      <h3>What the accuracy number hid</h3>
+      <p>The lexicon baseline scored 0.52 accuracy against AraBERT's 0.771 — a modest-looking gap until the per-class numbers come out. The lexicon's positive-class recall was 0.037. It was labelling almost everything negative, and its 0.884 positive precision only looked strong because it barely predicted positive at all. AraBERT's recall came in balanced at 0.753, which is the number that actually matters here, not the six-point accuracy gap.</p>
+      <p>That's the case study for why aggregate accuracy is a bad metric to trust on its own, and why I check per-class recall before I believe a headline number — on this project and generally.</p>
+
       <h3>Built with</h3>
       <p>AraBERT · PyTorch · Transformers</p>
     </div>

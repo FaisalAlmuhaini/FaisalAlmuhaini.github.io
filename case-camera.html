@@ -52,6 +52,10 @@
       <p>Validation accuracy landed between 0.76 and 0.88 across runs. That spread is the honest figure, and it is the reason uncertain predictions route to manual review instead of being auto-actioned.</p>
       <p>Frames were grouped by source video before splitting. Near-duplicate frames either side of a split will invent accuracy that isn't there.</p>
 
+      <h3>How the pieces fit</h3>
+      <p>Milestone XProtect supplies camera access. A .NET scanner retrieves one representative JPEG per camera per scan, on a schedule or on demand. The ONNX classifier scores it, and the scanner records the prediction, confidence, and frame path. A REST API exposes those results to a Laravel dashboard that handles status, history, filters, charts, and the manual-review queue — with SQLite for early development and MySQL for broader deployment.</p>
+      <p>Building the Laravel side of that dashboard was the reason I took a full-stack PHP and Laravel course partway through — learning aimed at a specific piece of live work rather than studied in isolation.</p>
+
       <h3>Built with</h3>
       <p>PyTorch · ONNX Runtime · ASP.NET Core 8 · Laravel · MySQL · Windows Server</p>
     </div>

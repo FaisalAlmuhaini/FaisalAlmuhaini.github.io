@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saudia analytics internship — Faisal Almuhaini</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SIDEBAR — keep identical across all pages -->
+<aside class="sidebar">
+  <h1 class="identity">Faisal<br>Almuhaini</h1>
+  <p class="descriptor">ai engineer</p>
+
+  <nav aria-label="Primary">
+    <ul class="navgroup">
+      <li><a href="index.html#home">home</a></li>
+      <li><a href="index.html#work" aria-current="page">work</a></li>
+    </ul>
+    <ul class="navgroup">
+      <li><a href="index.html#about">about</a></li>
+      <li><a href="index.html#credentials">credentials</a></li>
+      <li><a href="index.html#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="social">
+    <a href="https://www.linkedin.com/in/faisal-almuhaini" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 1.6a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2ZM2.2 6h2.8v8H2.2V6Zm4.6 0h2.7v1.1h.04c.38-.7 1.3-1.4 2.66-1.4 2.85 0 3.38 1.8 3.38 4.2V14h-2.8v-3.6c0-.86-.02-1.96-1.24-1.96-1.24 0-1.43.94-1.43 1.9V14H6.8V6Z"/></svg></a>
+  </div>
+
+  <div class="caption">
+    <strong id="cap-title">Saudia analytics internship</strong>
+    <span id="cap-sub">Power Apps, NLP prototype — 2025</span>
+  </div>
+</aside>
+<!-- /SIDEBAR -->
+
+<main>
+  <section class="view case" data-view="case-saudia" data-active>
+    <a class="back" href="index.html#work">← work</a>
+    <h1>Saudia analytics internship</h1>
+    <p class="meta">2025 · Power Apps · notification system · NLP prototype · internship</p>
+    <div class="case-body">
+      <p>Nine weeks rotating through Saudia's Advanced Data Analytics division — a different department each week, a different project to show for it. Three pieces of that work hold up on their own.</p>
+
+      <h3>Flight price prediction, shipped inside a Power App</h3>
+      <p>Built individually: a Power App called Flight Booking and Price Tracker, covering flight search, historical price tracking, and prediction. The prediction side trained a Random Forest Regressor on historical fare data, served through a Flask API, and called directly from the app — a full loop from a Kaggle dataset to a number a user could act on inside a real interface, not just a notebook cell.</p>
+
+      <h3>A price-drop notification concept</h3>
+      <p>A team project with two colleagues: an idea to let customers register a route and get notified when the fare dropped, aimed squarely at revenue and retention. We backed it with a full BRD and demand form, two use-case diagrams, and notification prototypes, then checked the reasoning against real behaviour — a Google Analytics review of the booking funnel showed a large share of users reaching the payment page and leaving without confirming, which is exactly the drop-off a price-drop nudge is meant to recover. The idea went to the Digital Factory's General Manager, who took it further into a discussion about layering a customer-behaviour recommender on top.</p>
+
+      <h3>A CV-skills classifier prototype</h3>
+      <p>A team project for the HR department, presented as Figma prototype screens rather than a shipped interface. The technical piece behind it was real: an SVM classifier over a TF-IDF vectorisation of extracted CV skills, routing an applicant toward the division their skills best matched.</p>
+
+      <h3>Recommendation</h3>
+      <p>The internship ended with a letter of recommendation from my supervisor in Advanced Analytics, attesting to Scrum participation, BRD authorship, and the business-analysis work behind the projects above.</p>
+      <p><img src="images/credentials/recommendation-letter.jpg" alt="Letter of recommendation from Faisal's supervisor at Saudia, Advanced Analytics" class="case-img"></p>
+
+      <h3>Built with</h3>
+      <p>Power Apps · Power BI · Python · scikit-learn · SQL · Flask · TF-IDF · SVM</p>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

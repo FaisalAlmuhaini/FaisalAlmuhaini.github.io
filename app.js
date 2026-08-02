@@ -1,6 +1,6 @@
 const CAPTIONS = {
   home:        ["Home", "Jeddah, Saudi Arabia"],
-  work:        ["Work", "Four selected projects"],
+  work:        ["Work", "Five selected projects"],
   about:       ["About", "Jeddah, Saudi Arabia"],
   credentials: ["Credentials", "Degree and certifications"],
   contact:     ["Contact", "Open to roles"]

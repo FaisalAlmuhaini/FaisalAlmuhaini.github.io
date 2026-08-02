@@ -14,11 +14,15 @@ Read the handoff and design direction notes there before substantial work.
 
 ## Current state
 
-The approved "Quiet" design is split into `index.html` (shell: sidebar, home/work/about/credentials/contact, hash-routed JS view switching) plus `style.css`, `app.js`, and four standalone, JS-free case-study pages (`case-camera.html`, `case-arabic.html`, `case-traffic.html`, `case-docker.html`). Sidebar markup is duplicated verbatim across all five pages — no include mechanism in plain HTML — bounded by `<!-- SIDEBAR -->` / `<!-- /SIDEBAR -->` markers so drift is checkable by eye.
+The approved "Quiet" design is split into `index.html` (shell: sidebar, home/work/about/credentials/contact, hash-routed JS view switching) plus `style.css`, `app.js`, and five standalone, JS-free case-study pages (`case-camera.html`, `case-arabic.html`, `case-traffic.html`, `case-docker.html`, `case-saudia.html`). Sidebar markup is duplicated verbatim across all six pages — no include mechanism in plain HTML — bounded by `<!-- SIDEBAR -->` / `<!-- /SIDEBAR -->` markers so drift is checkable by eye.
 
 `mockup-a-casework.html` and `mockup-b-specsheet.html` are **superseded**. Keep them; do not develop them. `mockup-c-quiet.html` has been deleted — it is preserved in git history.
 
-Version control is initialised (`main` branch). Nothing is deployed.
+Version control is initialised (`main` branch), tracking a remote. Nothing is deployed to a live host.
+
+Social links: LinkedIn only, site-wide. GitHub is deliberately hidden until a public repository exists — do not treat this as a missing placeholder to fill in. See `04 Projects/Personal Portfolio Site/Portfolio Decisions.md`.
+
+Credential images in `images/credentials/` are real (converted from `99 Attachments/Certificates`), not placeholders — including the recommendation letter, published unredacted by Faisal's explicit, informed choice. Do not redact or replace it without a new instruction.
 
 ## Stack — non-negotiable
 
@@ -69,7 +73,7 @@ Animate `transform` and `opacity` only. Never `transition: all`.
 ## Accessibility floor
 
 - WCAG 2.1 AA contrast: 4.5:1 body, 3:1 large text.
-- Palette (2026-08-01): `--paper #FBF8F3`, `--ink #0A0A0A`, `--label #6E5844` (sidebar nav), `--muted #5C5C5C`, `--faint #8A8A8A`. Calculated at 18.68:1, 6.30:1, 6.30:1, and 3.26:1 against paper respectively — all pass. The prior `--muted #9A9A9A`/`--faint #C8C8C8` on white measured 2.81:1/1.67:1 and failed AA; this palette change fixed that. **Re-measure** after any further palette change, do not assume.
+- Palette (2026-08-02): `--paper #F0EAD6`, `--ink #0A0A0A`, `--label #6E5844` (sidebar nav), `--muted #5C5C5C`, `--faint #6C6559`. Calculated at 16.45:1, 5.55:1, 5.55:1, and 4.79:1 against paper respectively — all pass. The prior `--faint #8A8A8A` measured 2.87:1 against the new paper and failed AA; it was darkened to `#6C6559` to fix that. **Re-measure** after any further palette change, do not assume.
 - Semantic HTML. Keyboard navigable. Visible focus states.
 - Works at 375px and 1440px.
 
