@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Traffic signal control — Faisal Almuhaini</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SIDEBAR — keep identical across all pages -->
+<aside class="sidebar">
+  <h1 class="identity">Faisal<br>Almuhaini</h1>
+  <p class="descriptor">ai engineer</p>
+
+  <nav aria-label="Primary">
+    <ul class="navgroup">
+      <li><a href="index.html#home">home</a></li>
+      <li><a href="index.html#work" aria-current="page">work</a></li>
+    </ul>
+    <ul class="navgroup">
+      <li><a href="index.html#about">about</a></li>
+      <li><a href="index.html#credentials">credentials</a></li>
+      <li><a href="index.html#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="social">
+    <a href="https://www.linkedin.com/in/faisal-almuhaini" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 1.6a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2ZM2.2 6h2.8v8H2.2V6Zm4.6 0h2.7v1.1h.04c.38-.7 1.3-1.4 2.66-1.4 2.85 0 3.38 1.8 3.38 4.2V14h-2.8v-3.6c0-.86-.02-1.96-1.24-1.96-1.24 0-1.43.94-1.43 1.9V14H6.8V6Z"/></svg></a>
+  </div>
+
+  <div class="caption">
+    <strong id="cap-title">Traffic signal control</strong>
+    <span id="cap-sub">Object detection, SUMO — 2024</span>
+  </div>
+</aside>
+<!-- /SIDEBAR -->
+
+<main>
+  <section class="view case" data-view="case-traffic" data-active>
+    <a class="back" href="index.html#work">← work</a>
+    <h1>Traffic signal control</h1>
+    <p class="meta">2024 · object detection · graduation project</p>
+    <div class="case-body">
+      <p>Fixed-cycle traffic lights hold a green light for an empty lane while a queue builds beside it. The graduation project replaced the cycle with the thing it should have been reading all along — how many cars are actually waiting.</p>
+      <p>YOLOv11 detects and counts vehicles inside a bounded region, incrementing on an entry line and decrementing on an exit line. The count maps to a green duration through a rule set. A four-way intersection in SUMO provided the test bed, and a Streamlit interface exposed the dataset, the live predictions, and the simulation.</p>
+
+      <h3>The metric that mattered</h3>
+      <p>Recall, not accuracy. The baseline detector scored 0.45 recall — it was missing roughly half of all vehicles. In a system that allocates green time by counting cars, every missed detection becomes wrong timing. The trained model reached 0.90 recall and 0.92 precision, mAP@0.5 of 0.96.</p>
+      <p>Simulation only. It was never deployed to a real intersection, and the gap between a SUMO junction and a real one is not small.</p>
+
+      <h3>Built with</h3>
+      <p>YOLOv11 · SUMO · Streamlit · Python</p>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

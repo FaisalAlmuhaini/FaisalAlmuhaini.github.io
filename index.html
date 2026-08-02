@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--
+  Split from mockup-c-quiet.html (design system "Quiet", approved).
+  See style.css for the full design-system record.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faisal Almuhaini</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+<!-- SIDEBAR — keep identical across all pages -->
+<aside class="sidebar">
+  <h1 class="identity">Faisal<br>Almuhaini</h1>
+  <p class="descriptor">ai engineer</p>
+
+  <nav aria-label="Primary">
+    <ul class="navgroup">
+      <li><a href="#home">home</a></li>
+      <li><a href="#work">work</a></li>
+    </ul>
+    <ul class="navgroup">
+      <li><a href="#about">about</a></li>
+      <li><a href="#credentials">credentials</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="social">
+    <a href="https://www.linkedin.com/in/faisal-almuhaini" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 1.6a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2ZM2.2 6h2.8v8H2.2V6Zm4.6 0h2.7v1.1h.04c.38-.7 1.3-1.4 2.66-1.4 2.85 0 3.38 1.8 3.38 4.2V14h-2.8v-3.6c0-.86-.02-1.96-1.24-1.96-1.24 0-1.43.94-1.43 1.9V14H6.8V6Z"/></svg></a>
+  </div>
+
+  <div class="caption">
+    <strong id="cap-title">Home</strong>
+    <span id="cap-sub">Jeddah, Saudi Arabia</span>
+  </div>
+</aside>
+<!-- /SIDEBAR -->
+
+<main>
+
+  <!-- ── home ── -->
+  <section class="view" data-view="home" data-active>
+    <p class="statement">I build machine-learning systems that have to survive contact with real infrastructure.</p>
+    <p class="statement">Constrained hardware, frozen SDK versions, and operators who need a decision, not a probability.</p>
+    <p class="lede">Currently working on computer vision and integration for a large surveillance deployment. Previously analytics at Saudia. BSc in Artificial Intelligence, University of Jeddah.</p>
+  </section>
+
+  <!-- ── work ── -->
+  <section class="view" data-view="work">
+    <p class="work-lede">Four projects: one running against real infrastructure, three built to learn something specific. Each one links through to how it actually went, including the parts that didn't.</p>
+    <ul class="index">
+      <li><a href="case-camera.html">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.5-2.5h5L16 7"/><circle cx="12" cy="13.5" r="3.5"/></svg>Camera cleanliness monitoring</h2>
+        <p class="meta">2025 — present · professional</p>
+        <p>Detecting degraded camera feeds across a large deployment, and turning a model score into something an operator can act on. Runs on an offline inference server — a lightweight classifier exported to ONNX and loaded by a single .NET service with no runtime to vendor.</p>
+      </a></li>
+      <li><a href="case-arabic.html">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v10H9l-4 4V5z"/></svg>Arabic sentiment classification</h2>
+        <p class="meta">2025 · academic</p>
+        <p>AraBERT fine-tuned over roughly 58,000 tweets, where dialect variance mattered more than architecture. The harder part wasn't the model — it was dialect variance and label disagreement that wasn't random.</p>
+      </a></li>
+      <li><a href="case-traffic.html">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>Traffic signal control</h2>
+        <p class="meta">2024 · graduation project</p>
+        <p>Replacing a fixed signal cycle with one that reads how many cars are actually waiting. The interesting number was recall — the baseline detector was missing half the vehicles, and in a counting system that becomes wrong timing.</p>
+      </a></li>
+      <li><a href="case-docker.html">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5L12 12l8-4.5M12 12v9"/></svg>Ticket classifier, containerised</h2>
+        <p class="meta">2026 — practice</p>
+        <p>A deliberately small end-to-end service, built to put container fundamentals into practice. It builds and runs — it is not a production system, and it isn't presented as one.</p>
+      </a></li>
+    </ul>
+  </section>
+
+  <!-- ── about ── -->
+  <section class="view" data-view="about">
+    <div class="prose">
+      <p>I studied Artificial Intelligence at the University of Jeddah and graduated in 2025. Before that I worked in analytics at Saudia, which is where I first got comfortable with the gap between a model that works in a notebook and a system that has to run somewhere real.</p>
+      <p>Since graduating I've worked where models meet infrastructure — which in practice means Windows Server, restricted networks, and SDK versions that were frozen years ago. That constraint has shaped how I work more than any course did. When you can't reach the internet from the deployment machine, you learn to care about what a dependency actually costs.</p>
+      <p>Outside the day job I've worked through certifications in containers and Kubernetes with IBM, and in MLOps on Google Cloud. Some of that is now applied, some is still lab work, and I keep the two marked separately rather than blur them.</p>
+      <p>I write things down. Architecture, decisions, what broke and why. Partly for whoever inherits the system, partly because writing it down is how I find out whether I understood it.</p>
+      <p>Arabic is my first language. I work in English.</p>
+    </div>
+  </section>
+
+  <!-- ── credentials ── -->
+  <section class="view" data-view="credentials">
+    <ul class="creds">
+      <li>
+        <button class="creds-thumb" aria-label="Enlarge: BSc Artificial Intelligence certificate">
+          <img src="images/credentials/uoj.svg" alt="University of Jeddah crest">
+        </button>
+        <span class="creds-text"><span>BSc Artificial Intelligence — University of Jeddah</span><span>2025</span></span>
+      </li>
+      <li>
+        <button class="creds-thumb" aria-label="Enlarge: Laravel and PHP certificate">
+          <img src="images/credentials/laravel-php.svg" alt="Laravel and PHP certificate, Board Infinity">
+        </button>
+        <span class="creds-text"><span>Laravel &amp; PHP — Board Infinity</span><span>2026 · applied</span></span>
+      </li>
+      <li>
+        <button class="creds-thumb" aria-label="Enlarge: Containers, Kubernetes and OpenShift certificate">
+          <img src="images/credentials/containers-ibm.svg" alt="Containers, Kubernetes and OpenShift certificate, IBM">
+        </button>
+        <span class="creds-text"><span>Containers, Kubernetes &amp; OpenShift — IBM</span><span>2026 · applied</span></span>
+      </li>
+      <li>
+        <button class="creds-thumb" aria-label="Enlarge: MLOps on Google Cloud specialization certificate">
+          <img src="images/credentials/mlops-gcp.svg" alt="MLOps on Google Cloud specialization certificate">
+        </button>
+        <span class="creds-text"><span>MLOps on Google Cloud — Specialization</span><span>2026 · labs</span></span>
+      </li>
+      <li>
+        <button class="creds-thumb" aria-label="Enlarge: Machine Learning in Production certificate">
+          <img src="images/credentials/mlp-deeplearning.svg" alt="Machine Learning in Production certificate, DeepLearning.AI">
+        </button>
+        <span class="creds-text"><span>Machine Learning in Production — DeepLearning.AI</span><span>2026 · labs</span></span>
+      </li>
+      <li>
+        <button class="creds-thumb" aria-label="Enlarge: AI Specialist certificate">
+          <img src="images/credentials/ai-specialist-sce.svg" alt="AI Specialist certificate, Saudi Council of Engineers">
+        </button>
+        <span class="creds-text"><span>AI Specialist — Saudi Council of Engineers</span><span>2025</span></span>
+      </li>
+    </ul>
+    <p class="footnote">Marked <em>applied</em> where I have shipped something with it and <em>labs</em> where I haven't. The distinction seems worth keeping.</p>
+  </section>
+
+  <!-- ── contact ── -->
+  <section class="view" data-view="contact">
+    <ul class="contact-list">
+      <li><a href="mailto:faisal_almuhaini@hotmail.com">faisal_almuhaini@hotmail.com</a></li>
+      <li><a href="https://www.linkedin.com/in/faisal-almuhaini" target="_blank" rel="noopener">linkedin</a></li>
+    </ul>
+    <p class="footnote">Based in Jeddah. Open to on-site and hybrid roles in Saudi Arabia.</p>
+  </section>
+
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged credential image">
+  <button class="lightbox-close">close</button>
+  <img src="" alt="">
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

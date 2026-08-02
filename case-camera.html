@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camera cleanliness monitoring — Faisal Almuhaini</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SIDEBAR — keep identical across all pages -->
+<aside class="sidebar">
+  <h1 class="identity">Faisal<br>Almuhaini</h1>
+  <p class="descriptor">ai engineer</p>
+
+  <nav aria-label="Primary">
+    <ul class="navgroup">
+      <li><a href="index.html#home">home</a></li>
+      <li><a href="index.html#work" aria-current="page">work</a></li>
+    </ul>
+    <ul class="navgroup">
+      <li><a href="index.html#about">about</a></li>
+      <li><a href="index.html#credentials">credentials</a></li>
+      <li><a href="index.html#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="social">
+    <a href="https://www.linkedin.com/in/faisal-almuhaini" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 1.6a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2ZM2.2 6h2.8v8H2.2V6Zm4.6 0h2.7v1.1h.04c.38-.7 1.3-1.4 2.66-1.4 2.85 0 3.38 1.8 3.38 4.2V14h-2.8v-3.6c0-.86-.02-1.96-1.24-1.96-1.24 0-1.43.94-1.43 1.9V14H6.8V6Z"/></svg></a>
+  </div>
+
+  <div class="caption">
+    <strong id="cap-title">Camera cleanliness monitoring</strong>
+    <span id="cap-sub">Computer vision, integration — 2025 to present</span>
+  </div>
+</aside>
+<!-- /SIDEBAR -->
+
+<main>
+  <section class="view case" data-view="case-camera" data-active>
+    <a class="back" href="index.html#work">← work</a>
+    <h1>Camera cleanliness monitoring</h1>
+    <p class="meta">2025 — present · computer vision, integration · professional</p>
+    <div class="case-body">
+      <p>A large surveillance deployment had no way to know which of its cameras had degraded. Dust, rain, blur, obstruction — finding out meant a person opening feeds one at a time.</p>
+      <p>I built the system that answers it automatically. Frames are pulled from the VMS, classified on-server, and surfaced as operational state rather than raw model output.</p>
+
+      <h3>The constraint that shaped it</h3>
+      <p>The inference server has no internet access and modest CPU. I trained a lightweight classifier and exported it to ONNX rather than shipping a Python runtime — the .NET scanner loads a single file and has no dependency chain to vendor onto an offline machine.</p>
+
+      <h3>What the numbers actually say</h3>
+      <p>Validation accuracy landed between 0.76 and 0.88 across runs. That spread is the honest figure, and it is the reason uncertain predictions route to manual review instead of being auto-actioned.</p>
+      <p>Frames were grouped by source video before splitting. Near-duplicate frames either side of a split will invent accuracy that isn't there.</p>
+
+      <h3>Built with</h3>
+      <p>PyTorch · ONNX Runtime · ASP.NET Core 8 · Laravel · MySQL · Windows Server</p>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

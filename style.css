@@ -1,0 +1,227 @@
+/*
+  MOCKUP C — "Quiet"
+  ============================================================
+  Reference: Samantha Keely Smith (painter portfolio).
+
+  WHAT WAS BORROWED
+  - A narrow fixed left column holding *everything* — identity,
+    navigation, and the caption for whatever is on screen.
+  - A very large content field that the chrome never competes with.
+  - Lowercase, small navigation. Full ink colour only for the active item.
+  - No rules, no borders, no cards, no shadows anywhere.
+  - Caption pinned to the bottom of the sidebar, small and factual.
+
+  WHAT CHANGED FOR AN ENGINEER
+  A painter fills the field with a painting. I have no artwork, so
+  the field holds one idea at a time, set large with a lot of air
+  around it. Restraint replaces imagery. The work index is a sparse
+  list, not a grid of cards.
+
+  TYPE
+    identity   1.3125rem  serif, caps, tracked +0.02em, lh 1.15
+    descriptor 0.9375rem  serif italic
+    nav        0.8125rem  sans, lowercase
+    statement  clamp(1.375rem, 1.05rem + 1.4vw, 2rem) serif, lh 1.4
+    body       0.9375rem  sans, lh 1.75
+    caption    0.75rem    sans
+
+  COLOUR
+    #FBF8F3 paper (warm off-white) · #0A0A0A ink
+    #6E5844 label (balanced brown, sidebar nav) · #5C5C5C muted
+    #8A8A8A faint
+
+  MOTION  (per Emil Kowalski's framework)
+    Navigation is used often, so it barely animates: colour only,
+    120ms ease, gated behind a hover media query.
+    View changes are occasional, so they get 220ms opacity + 6px
+    rise on a strong ease-out curve. Nothing scales from zero.
+    All motion removed under prefers-reduced-motion.
+*/
+:root{
+  --paper:#FBF8F3; --ink:#0A0A0A; --label:#6E5844; --muted:#5C5C5C; --faint:#8A8A8A;
+  --serif: ui-serif, Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --pad-y: clamp(2.5rem, 4vw, 2.75rem);
+  --pad-x: clamp(1.75rem, 3.2vw, 3rem);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:0.9375rem; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ═══ sidebar ═══ */
+.sidebar{
+  position:fixed; inset:0 auto 0 0; width:15.5rem;
+  padding:var(--pad-y) 1.5rem var(--pad-y) var(--pad-x);
+  display:flex; flex-direction:column;
+}
+.identity{
+  font-family:var(--serif); font-size:1.3125rem; font-weight:500;
+  text-transform:uppercase; letter-spacing:0.02em; line-height:1.15;
+  margin:0;
+}
+.descriptor{
+  font-family:var(--serif); font-style:italic; font-size:0.9375rem;
+  color:var(--ink); margin:0.55rem 0 0; line-height:1.3;
+}
+
+nav{margin-top:2.75rem}
+.navgroup{list-style:none; margin:0 0 1.4rem; padding:0}
+.navgroup:last-child{margin-bottom:0}
+.navgroup a{
+  display:block; padding:0.155rem 0;
+  font-size:0.8125rem; color:var(--label); text-decoration:none;
+  letter-spacing:0.005em;
+}
+.navgroup a[aria-current="page"]{color:var(--ink)}
+@media (hover:hover) and (pointer:fine){
+  .navgroup a{transition:color 120ms ease}
+  .navgroup a:hover{color:var(--ink)}
+}
+.navgroup a:focus-visible{outline:1px solid var(--ink); outline-offset:3px}
+
+.social{display:flex; gap:0.85rem; margin-top:1.9rem}
+.social a{color:var(--faint); line-height:0; text-decoration:none}
+@media (hover:hover) and (pointer:fine){
+  .social a{transition:color 120ms ease}
+  .social a:hover{color:var(--ink)}
+}
+.social svg{width:13px; height:13px; display:block}
+
+.caption{margin-top:auto; padding-top:2rem}
+.caption strong{display:block; font-size:0.8125rem; font-weight:600; line-height:1.4}
+.caption span{display:block; font-size:0.75rem; color:var(--muted); line-height:1.5; margin-top:0.15rem}
+
+/* ═══ field ═══ */
+main{
+  margin-left:15.5rem; padding:var(--pad-y) var(--pad-x) 6rem;
+  min-height:100vh;
+}
+.view{display:none}
+.view[data-active]{display:block; animation:rise 220ms var(--ease-out) both}
+@keyframes rise{
+  from{opacity:0; transform:translateY(6px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+.statement{
+  font-family:var(--serif);
+  font-size:clamp(1.375rem, 1.05rem + 1.4vw, 2rem);
+  line-height:1.4; letter-spacing:-0.005em;
+  max-width:30ch; margin:0;
+}
+.statement + .statement{margin-top:1.6rem}
+.lede{max-width:46ch; color:var(--ink); margin:3.5rem 0 0}
+
+/* work index */
+.index{list-style:none; margin:0; padding:0; max-width:44rem}
+.index li{margin:0 0 2.6rem}
+.index li:last-child{margin-bottom:0}
+.index h2{
+  font-family:var(--serif); font-size:1.25rem; font-weight:500;
+  margin:0; line-height:1.3; letter-spacing:-0.005em;
+  display:flex; align-items:center; gap:0.55em;
+}
+.index h2 svg{width:0.85em; height:0.85em; flex-shrink:0; color:var(--label)}
+.work-lede{max-width:52ch; color:#3A3A3A; margin:0 0 3rem}
+.index .meta{font-size:0.75rem; color:var(--muted); margin:0.3rem 0 0.55rem}
+.index p{margin:0; max-width:52ch; color:#3A3A3A}
+.index a{
+  all:unset; cursor:pointer; display:block;
+}
+.index a:focus-visible{outline:1px solid var(--ink); outline-offset:6px}
+@media (hover:hover) and (pointer:fine){
+  .index h2{transition:opacity 120ms ease}
+  .index a:hover h2{opacity:0.55}
+}
+
+/* case study */
+.case h1{
+  font-family:var(--serif); font-size:clamp(1.5rem,1.2rem + 1.1vw,1.875rem);
+  font-weight:500; margin:0; line-height:1.25; letter-spacing:-0.01em;
+}
+.case .meta{font-size:0.75rem; color:var(--muted); margin:0.45rem 0 0}
+.case-body{max-width:52ch; margin-top:2.75rem}
+.case-body p{margin:0 0 1.5rem}
+.case-body p:last-child{margin-bottom:0}
+.case-body h3{
+  font-size:0.75rem; font-weight:600; text-transform:uppercase;
+  letter-spacing:0.09em; color:var(--muted); margin:3rem 0 0.85rem;
+}
+.back{
+  all:unset; cursor:pointer; font-size:0.75rem; color:var(--muted);
+  margin-bottom:2.25rem; display:inline-block;
+}
+@media (hover:hover) and (pointer:fine){
+  .back{transition:color 120ms ease}
+  .back:hover{color:var(--ink)}
+}
+.back:focus-visible{outline:1px solid var(--ink); outline-offset:4px}
+
+/* about + credentials */
+.prose{max-width:52ch}
+.prose p{margin:0 0 1.5rem}
+.prose p:last-child{margin-bottom:0}
+.creds{list-style:none; margin:0; padding:0; max-width:38rem}
+.creds li{
+  display:flex; align-items:center; gap:1.25rem;
+  padding:0.62rem 0; font-size:0.875rem;
+}
+.creds-text{display:flex; flex-direction:column}
+.creds-text span:last-child{color:var(--muted); font-size:0.75rem; padding-top:0.25rem}
+.footnote{font-size:0.8125rem; color:var(--muted); max-width:46ch; margin:2rem 0 0}
+
+/* credential thumbnail + lightbox */
+.creds-thumb{
+  all:unset; cursor:zoom-in; flex-shrink:0; display:block;
+  width:2.75rem; height:2.75rem;
+}
+.creds-thumb img{
+  width:100%; height:100%; display:block; object-fit:contain;
+}
+.creds-thumb:focus-visible{outline:1px solid var(--ink); outline-offset:4px}
+@media (hover:hover) and (pointer:fine){
+  .creds-thumb{transition:opacity 120ms ease}
+  .creds-thumb:hover{opacity:0.7}
+}
+.lightbox{
+  display:none; position:fixed; inset:0; z-index:10;
+  background:rgba(10,10,10,0.9);
+  align-items:center; justify-content:center; padding:3rem;
+}
+.lightbox[data-open]{display:flex; animation:rise 220ms var(--ease-out) both}
+.lightbox img{max-width:100%; max-height:100%; display:block}
+.lightbox-close{
+  all:unset; cursor:pointer; position:fixed; top:1.75rem; right:1.75rem;
+  font-size:0.8125rem; color:#FBF8F3;
+}
+@media (hover:hover) and (pointer:fine){
+  .lightbox-close{transition:opacity 120ms ease}
+  .lightbox-close:hover{opacity:0.7}
+}
+.lightbox-close:focus-visible{outline:1px solid #FBF8F3; outline-offset:4px}
+
+.contact-list{list-style:none; margin:0; padding:0}
+.contact-list li{margin:0 0 0.5rem}
+.contact-list a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--faint); padding-bottom:1px}
+@media (hover:hover) and (pointer:fine){
+  .contact-list a{transition:border-color 120ms ease}
+  .contact-list a:hover{border-bottom-color:var(--ink)}
+}
+.contact-list a:focus-visible{outline:1px solid var(--ink); outline-offset:3px}
+
+/* ═══ responsive ═══ */
+@media (max-width:60rem){
+  .sidebar{position:static; width:auto; padding-bottom:0}
+  .caption{display:none}
+  main{margin-left:0; padding-top:2.5rem}
+  nav{margin-top:2rem}
+  .navgroup{display:flex; flex-wrap:wrap; gap:0 1.1rem; margin-bottom:0.35rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important; transition:none !important}
+}

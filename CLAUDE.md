@@ -14,11 +14,11 @@ Read the handoff and design direction notes there before substantial work.
 
 ## Current state
 
-`mockup-c-quiet.html` is the **approved** design and the reference implementation. A single self-contained file: fixed sidebar, nine JavaScript-switched views, caption that updates per view.
+The approved "Quiet" design is split into `index.html` (shell: sidebar, home/work/about/credentials/contact, hash-routed JS view switching) plus `style.css`, `app.js`, and four standalone, JS-free case-study pages (`case-camera.html`, `case-arabic.html`, `case-traffic.html`, `case-docker.html`). Sidebar markup is duplicated verbatim across all five pages — no include mechanism in plain HTML — bounded by `<!-- SIDEBAR -->` / `<!-- /SIDEBAR -->` markers so drift is checkable by eye.
 
-`mockup-a-casework.html` and `mockup-b-specsheet.html` are **superseded**. Keep them; do not develop them.
+`mockup-a-casework.html` and `mockup-b-specsheet.html` are **superseded**. Keep them; do not develop them. `mockup-c-quiet.html` has been deleted — it is preserved in git history.
 
-Nothing is under version control. Nothing is deployed.
+Version control is initialised (`main` branch). Nothing is deployed.
 
 ## Stack — non-negotiable
 
@@ -69,7 +69,7 @@ Animate `transform` and `opacity` only. Never `transition: all`.
 ## Accessibility floor
 
 - WCAG 2.1 AA contrast: 4.5:1 body, 3:1 large text.
-- `--muted #9A9A9A` on white is near the floor — **re-measure** after any palette change, do not assume.
+- Palette (2026-08-01): `--paper #FBF8F3`, `--ink #0A0A0A`, `--label #6E5844` (sidebar nav), `--muted #5C5C5C`, `--faint #8A8A8A`. Calculated at 18.68:1, 6.30:1, 6.30:1, and 3.26:1 against paper respectively — all pass. The prior `--muted #9A9A9A`/`--faint #C8C8C8` on white measured 2.81:1/1.67:1 and failed AA; this palette change fixed that. **Re-measure** after any further palette change, do not assume.
 - Semantic HTML. Keyboard navigable. Visible focus states.
 - Works at 375px and 1440px.
 
@@ -89,7 +89,7 @@ Read `03 Career/Professional Claims and Boundaries.md` first.
 
 ## Git
 
-Not yet initialised. When it is: inspect `git status` before editing, never run destructive operations, and do not commit or push unless asked.
+Initialised, branch `main`. Inspect `git status` before editing, never run destructive operations, and do not commit or push unless asked.
 
 ## Definition of done
 
