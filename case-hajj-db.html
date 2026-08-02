@@ -42,16 +42,20 @@
       <p>A relational schema for organising Hajj logistics — pilgrims, campaigns, employees, accommodation, and packages across multiple countries of origin. The interesting part of this project happens before any code runs.</p>
 
       <h3>Design before implementation</h3>
-      <p>An ER model came first: countries, campaigns, bundles, tents, people, and employees, with attributes kept deliberately minimal.</p>
-      <figure class="case-figure">
-        <img class="case-img" src="images/case/hajjdb-er.jpg" alt="Entity-relationship diagram showing Country, Campaign, Employees, Bundle, Tent, and People entities with primary and foreign keys">
-        <figcaption class="case-caption">ER model: countries, campaigns, bundles, tents, people, and employees.</figcaption>
-      </figure>
-      <p>That model mapped to six related tables with primary and foreign keys — campaigns reference countries, bundles reference campaigns, and the rest hang off that spine. Normalisation analysis found no anomalies to fix, because the design satisfied normal form from the start rather than needing a later pass to correct it.</p>
-      <figure class="case-figure">
-        <img class="case-img" src="images/case/hajjdb-relational.jpg" alt="Relational schema derived from the ER model, showing Campaign, Country, Bundle, Employees, Tent, and People tables with foreign-key references">
-        <figcaption class="case-caption">The ER model converted to a relational schema — six tables, already in normal form.</figcaption>
-      </figure>
+      <div class="case-row">
+        <p>An ER model came first: countries, campaigns, bundles, tents, people, and employees, with attributes kept deliberately minimal.</p>
+        <figure class="case-figure">
+          <img class="case-img" src="images/case/hajjdb-er.jpg" alt="Entity-relationship diagram showing Country, Campaign, Employees, Bundle, Tent, and People entities with primary and foreign keys">
+          <figcaption class="case-caption">ER model: countries, campaigns, bundles, tents, people, and employees.</figcaption>
+        </figure>
+      </div>
+      <div class="case-row">
+        <p>That model mapped to six related tables with primary and foreign keys — campaigns reference countries, bundles reference campaigns, and the rest hang off that spine. Normalisation analysis found no anomalies to fix, because the design satisfied normal form from the start rather than needing a later pass to correct it.</p>
+        <figure class="case-figure">
+          <img class="case-img" src="images/case/hajjdb-relational.jpg" alt="Relational schema derived from the ER model, showing Campaign, Country, Bundle, Employees, Tent, and People tables with foreign-key references">
+          <figcaption class="case-caption">The ER model converted to a relational schema — six tables, already in normal form.</figcaption>
+        </figure>
+      </div>
 
       <h3>What got built</h3>
       <p>The schema was implemented in Oracle SQL and populated with sample data. Four queries exercise different constructs — sorted retrieval, grouped aggregation, a subquery combining an aggregate with a filter, and a join across tables. Two parameterised stored procedures handle an insert into the country table and a price update on the bundle table, demonstrated on a bundle priced at 20,000 becoming 23,000 after a tax update.</p>

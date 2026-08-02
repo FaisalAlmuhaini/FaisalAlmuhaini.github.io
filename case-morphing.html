@@ -42,21 +42,25 @@
       <p>Merge two images into one through a smooth intermediate sequence — the kind of computer vision that predates handing the problem to a neural net.</p>
 
       <h3>The problem that shaped it</h3>
-      <p>Morphing is sensitive to noise. Blend two images where one carries noise and the artefacts show up throughout the transition, not just at the edges. So the work started with denoising, not with the morph itself — diagnosing an input-quality problem before treating it as an algorithm problem.</p>
-      <figure class="case-figure">
-        <img class="case-img" src="images/case/morph-noise.jpg" alt="Side-by-side comparison of a clean apple image and the same image with visible noise added">
-        <figcaption class="case-caption">Clean source versus noise-added source — the artefact this pipeline had to remove before morphing.</figcaption>
-      </figure>
+      <div class="case-row">
+        <p>Morphing is sensitive to noise. Blend two images where one carries noise and the artefacts show up throughout the transition, not just at the edges. So the work started with denoising, not with the morph itself — diagnosing an input-quality problem before treating it as an algorithm problem.</p>
+        <figure class="case-figure">
+          <img class="case-img" src="images/case/morph-noise.jpg" alt="Side-by-side comparison of a clean apple image and the same image with visible noise added">
+          <figcaption class="case-caption">Clean source versus noise-added source — the artefact this pipeline had to remove before morphing.</figcaption>
+        </figure>
+      </div>
 
       <h3>Pipeline</h3>
       <p>Gaussian blur via OpenCV smooths both source images before any blending happens. Alpha blending then starts at 0 and increments each iteration until the transition completes, producing a sequence of intermediate frames — stored as PNGs, then assembled into a GIF with RGB conversion applied so colour survives the encoding.</p>
 
       <h3>What the comparison showed</h3>
-      <p>Tested with a five-step morph on noisy source images, and separately on human faces. Before-and-after comparisons made the denoising step's effect visible directly — the difference between an artefact-ridden blend and a clean one. No quantitative image-quality metric was computed; the evaluation was visual, and that's an honest limitation, not a hidden one.</p>
-      <figure class="case-figure">
-        <img class="case-img" src="images/case/morph-sequence.jpg" alt="Six-frame morph sequence transitioning smoothly from an orange to an apple">
-        <figcaption class="case-caption">Intermediate frames of the orange-to-apple morph, five steps end to end.</figcaption>
-      </figure>
+      <div class="case-row">
+        <p>Tested with a five-step morph on noisy source images, and separately on human faces. Before-and-after comparisons made the denoising step's effect visible directly — the difference between an artefact-ridden blend and a clean one. No quantitative image-quality metric was computed; the evaluation was visual, and that's an honest limitation, not a hidden one.</p>
+        <figure class="case-figure">
+          <img class="case-img" src="images/case/morph-sequence.jpg" alt="Six-frame morph sequence transitioning smoothly from an orange to an apple">
+          <figcaption class="case-caption">Intermediate frames of the orange-to-apple morph, five steps end to end.</figcaption>
+        </figure>
+      </div>
 
       <h3>Built with</h3>
       <p>Python · OpenCV · Gaussian filtering · alpha blending</p>

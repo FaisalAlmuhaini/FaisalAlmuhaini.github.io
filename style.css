@@ -172,13 +172,23 @@ main{
   font-weight:500; margin:0; line-height:1.25; letter-spacing:-0.01em;
 }
 .case .meta{font-size:0.75rem; color:var(--muted); margin:0.45rem 0 0}
-.case-body{max-width:52ch; margin-top:2.75rem}
-.case-body p{margin:0 0 1.5rem}
-.case-body p:last-child{margin-bottom:0}
+.case-body{max-width:56rem; margin-top:2.75rem}
+.case-body > p{max-width:52ch; margin:0 0 1.5rem}
+.case-body > p:last-child{margin-bottom:0}
 .case-img{max-width:26rem; width:100%; height:auto; display:block; margin:0.5rem 0 1.5rem}
 .case-figure{margin:0.5rem 0 1.5rem}
 .case-figure .case-img{margin:0 0 0.5rem}
 .case-caption{font-size:0.75rem; color:var(--muted); margin:0}
+
+/* text + image side by side, image on the right */
+.case-row{display:flex; gap:2.5rem; align-items:flex-start; margin:0 0 1.5rem}
+.case-row p{max-width:52ch; margin:0; flex:1 1 auto; min-width:0}
+.case-row .case-figure{flex:0 0 16rem; width:16rem; margin:0}
+.case-row .case-figure .case-img{max-width:none; width:100%}
+@media (max-width:40rem){
+  .case-row{flex-direction:column; gap:1rem}
+  .case-row .case-figure{width:100%; flex-basis:auto}
+}
 .case-body code{font-family:ui-monospace, "SF Mono", Consolas, monospace; font-size:0.875em}
 .case-body p a{color:var(--ink); border-bottom:1px solid var(--faint); text-decoration:none; padding-bottom:1px}
 @media (hover:hover) and (pointer:fine){

@@ -46,12 +46,34 @@
       <p>The inference server has no internet access and modest CPU. I trained a lightweight classifier and exported it to ONNX rather than shipping a Python runtime — the .NET scanner loads a single file and has no dependency chain to vendor onto an offline machine.</p>
 
       <h3>What the numbers actually say</h3>
-      <p>Validation accuracy landed between 0.76 and 0.88 across runs. That spread is the honest figure, and it is the reason uncertain predictions route to manual review instead of being auto-actioned.</p>
+      <p>Validation accuracy now reaches 92%, up from the 0.76–0.88 range in earlier training rounds, following further dataset work and retraining. Precision and recall sit in the high 80s to low 90s across evaluation runs — close but not identical, which is expected variance across runs rather than a single fixed number. That spread is the honest figure, and it is the reason uncertain predictions route to manual review instead of being auto-actioned.</p>
       <p>Frames were grouped by source video before splitting. Near-duplicate frames either side of a split will invent accuracy that isn't there.</p>
 
       <h3>How the pieces fit</h3>
-      <p>Milestone XProtect supplies camera access. A .NET scanner retrieves one representative JPEG per camera per scan, on a schedule or on demand. The ONNX classifier scores it, and the scanner records the prediction, confidence, and frame path. A REST API exposes those results to a Laravel dashboard that handles status, history, filters, charts, and the manual-review queue — with SQLite for early development and MySQL for broader deployment.</p>
+      <div class="case-row">
+        <p>Milestone XProtect supplies camera access. A .NET scanner retrieves one representative JPEG per camera per scan, on a schedule or on demand. The ONNX classifier scores it, and the scanner records the prediction, confidence, and frame path. A REST API exposes those results to a Laravel dashboard that handles status, history, filters, charts, and the manual-review queue — with SQLite for early development and MySQL for broader deployment.</p>
+        <figure class="case-figure">
+          <img class="case-img" src="images/case/camera-usecase.jpg" alt="Use case diagram showing the VMS operator and the Milestone management server interacting with the website through manual scans, routine scans, and results pages">
+          <figcaption class="case-caption">System use case: how a scan request moves from operator or schedule through to results.</figcaption>
+        </figure>
+      </div>
       <p>Building the Laravel side of that dashboard was the reason I took a full-stack PHP and Laravel course partway through — learning aimed at a specific piece of live work rather than studied in isolation.</p>
+
+      <h3>The dashboard</h3>
+      <div class="case-row">
+        <p>The dashboard rolls scan results up into a single operational view: overall camera health, the most recent scan run, a rolling trend of clean-versus-dirty counts, and alerts for cameras that have stayed dirty long enough to need attention.</p>
+        <figure class="case-figure">
+          <img class="case-img" src="images/case/camera-dashboard.jpg" alt="Operational dashboard showing camera health status, latest scan run, a seven-day scan trend chart, and dirty-duration alerts">
+          <figcaption class="case-caption">Dashboard overview: camera health, scan trend, and alerts needing review.</figcaption>
+        </figure>
+      </div>
+      <div class="case-row">
+        <p>A filterable results table sits underneath, one row per scanned camera with its status, confidence score, and a manual-review action — the queue that uncertain predictions route into rather than being auto-actioned.</p>
+        <figure class="case-figure">
+          <img class="case-img" src="images/case/camera-results.jpg" alt="Filterable results table listing scanned cameras with status, confidence score, and a view-details action, with camera identifiers and thumbnails blurred">
+          <figcaption class="case-caption">Per-camera results table, filterable by status, building, camera, and date range.</figcaption>
+        </figure>
+      </div>
 
       <h3>Built with</h3>
       <p>PyTorch · ONNX Runtime · ASP.NET Core 8 · Laravel · MySQL · Windows Server</p>
