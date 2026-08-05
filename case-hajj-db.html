@@ -45,14 +45,18 @@
       <div class="case-row">
         <p>An ER model came first: countries, campaigns, bundles, tents, people, and employees, with attributes kept deliberately minimal.</p>
         <figure class="case-figure">
-          <img class="case-img" src="images/case/hajjdb-er.jpg" alt="Entity-relationship diagram showing Country, Campaign, Employees, Bundle, Tent, and People entities with primary and foreign keys">
+          <button class="case-img-btn" aria-label="Enlarge: entity-relationship diagram of the Hajj organisation database">
+            <img class="case-img" src="images/case/hajjdb-er.jpg" alt="Entity-relationship diagram showing Country, Campaign, Employees, Bundle, Tent, and People entities with primary and foreign keys">
+          </button>
           <figcaption class="case-caption">ER model: countries, campaigns, bundles, tents, people, and employees.</figcaption>
         </figure>
       </div>
       <div class="case-row">
         <p>That model mapped to six related tables with primary and foreign keys — campaigns reference countries, bundles reference campaigns, and the rest hang off that spine. Normalisation analysis found no anomalies to fix, because the design satisfied normal form from the start rather than needing a later pass to correct it.</p>
         <figure class="case-figure">
-          <img class="case-img" src="images/case/hajjdb-relational.jpg" alt="Relational schema derived from the ER model, showing Campaign, Country, Bundle, Employees, Tent, and People tables with foreign-key references">
+          <button class="case-img-btn" aria-label="Enlarge: relational schema derived from the ER model">
+            <img class="case-img" src="images/case/hajjdb-relational.jpg" alt="Relational schema derived from the ER model, showing Campaign, Country, Bundle, Employees, Tent, and People tables with foreign-key references">
+          </button>
           <figcaption class="case-caption">The ER model converted to a relational schema — six tables, already in normal form.</figcaption>
         </figure>
       </div>
@@ -69,5 +73,11 @@
   </section>
 </main>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button class="lightbox-close">close</button>
+  <img src="" alt="">
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>

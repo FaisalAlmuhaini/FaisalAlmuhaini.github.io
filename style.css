@@ -180,6 +180,15 @@ main{
 .case-figure .case-img{margin:0 0 0.5rem}
 .case-caption{font-size:0.75rem; color:var(--muted); margin:0}
 
+/* case image zoom trigger — enlarges into the shared lightbox */
+.case-img-btn{all:unset; cursor:zoom-in; display:block}
+.case-img-btn .case-img{margin:0 0 0.5rem}
+.case-img-btn:focus-visible{outline:1px solid var(--ink); outline-offset:4px}
+@media (hover:hover) and (pointer:fine){
+  .case-img-btn{transition:opacity 120ms ease}
+  .case-img-btn:hover{opacity:0.7}
+}
+
 /* text + image side by side, image on the right */
 .case-row{display:flex; gap:2.5rem; align-items:flex-start; margin:0 0 1.5rem}
 .case-row p{max-width:52ch; margin:0; flex:1 1 auto; min-width:0}

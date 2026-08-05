@@ -46,21 +46,27 @@
       <div class="case-row">
         <p>Recall, not accuracy. The baseline detector scored 0.45 recall — it was missing roughly half of all vehicles. In a system that allocates green time by counting cars, every missed detection becomes wrong timing. The trained model reached 0.90 recall and 0.92 precision, mAP@0.5 of 0.96.</p>
         <figure class="case-figure">
-          <img class="case-img" src="images/case/traffic-detection.jpg" alt="Four YOLOv11 detection samples on night-time traffic footage, each vehicle boxed with a confidence score">
+          <button class="case-img-btn" aria-label="Enlarge: four YOLOv11 detection samples on night-time traffic footage">
+            <img class="case-img" src="images/case/traffic-detection.jpg" alt="Four YOLOv11 detection samples on night-time traffic footage, each vehicle boxed with a confidence score">
+          </button>
           <figcaption class="case-caption">Detection output on the test set, including low-light and congested lanes.</figcaption>
         </figure>
       </div>
       <div class="case-row">
         <p>The count-to-timing rule is intentionally simple: a queue of 8 vehicles gets 20 seconds of green, a queue of 20 gets 30 — no learned policy, just a rule set driven directly off the detection count.</p>
         <figure class="case-figure">
-          <img class="case-img" src="images/case/traffic-queue.jpg" alt="Queue manager output showing a bounded detection region, vehicle count, and the allocated green-light time for two traffic samples">
+          <button class="case-img-btn" aria-label="Enlarge: queue manager output showing detection region, vehicle count, and allocated green time">
+            <img class="case-img" src="images/case/traffic-queue.jpg" alt="Queue manager output showing a bounded detection region, vehicle count, and the allocated green-light time for two traffic samples">
+          </button>
           <figcaption class="case-caption">Queue manager: vehicle count inside the bounded region maps directly to green-light duration.</figcaption>
         </figure>
       </div>
       <div class="case-row">
         <p>Simulation only. It was never deployed to a real intersection, and the gap between a SUMO junction and a real one is not small.</p>
         <figure class="case-figure">
-          <img class="case-img" src="images/case/traffic-sumo.jpg" alt="SUMO simulation of a four-way intersection with simulated vehicles queued at red lights">
+          <button class="case-img-btn" aria-label="Enlarge: SUMO simulation of a four-way intersection with vehicles queued at red lights">
+            <img class="case-img" src="images/case/traffic-sumo.jpg" alt="SUMO simulation of a four-way intersection with simulated vehicles queued at red lights">
+          </button>
           <figcaption class="case-caption">The four-way SUMO intersection used as the test bed, mid-simulation.</figcaption>
         </figure>
       </div>
@@ -74,5 +80,11 @@
   </section>
 </main>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button class="lightbox-close">close</button>
+  <img src="" alt="">
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>

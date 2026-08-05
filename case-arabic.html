@@ -46,7 +46,9 @@
       <div class="case-row">
         <p>The lexicon baseline scored 0.52 accuracy against AraBERT's 0.771 — a modest-looking gap until the per-class numbers come out. The lexicon's positive-class recall was 0.037. It was labelling almost everything negative, and its 0.884 positive precision only looked strong because it barely predicted positive at all. AraBERT's recall came in balanced at 0.753, which is the number that actually matters here, not the six-point accuracy gap.</p>
         <figure class="case-figure">
-          <img class="case-img" src="images/case/arabic-metrics.jpg" alt="Bar chart of AraBERT evaluation metrics: accuracy 0.771, precision 0.788, recall 0.753, F1 0.770">
+          <button class="case-img-btn" aria-label="Enlarge: bar chart of AraBERT evaluation metrics">
+            <img class="case-img" src="images/case/arabic-metrics.jpg" alt="Bar chart of AraBERT evaluation metrics: accuracy 0.771, precision 0.788, recall 0.753, F1 0.770">
+          </button>
           <figcaption class="case-caption">AraBERT evaluation metrics on the held-out test split.</figcaption>
         </figure>
       </div>
@@ -58,5 +60,11 @@
   </section>
 </main>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button class="lightbox-close">close</button>
+  <img src="" alt="">
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>

@@ -28,10 +28,17 @@ function route(){
   show(location.hash.slice(1) || "home");
 }
 
-window.addEventListener("hashchange", route);
-route();
+/* index.html has multiple [data-view] sections and hash-routes between
+   them; the standalone case-*.html pages have exactly one, already
+   marked data-active in the markup, so routing must not run there —
+   it would hide the page's only section. */
+if(views.length > 1){
+  window.addEventListener("hashchange", route);
+  route();
+}
 
-/* credential lightbox */
+/* image zoom lightbox — shared by credential thumbnails (index.html)
+   and case-study figures (index.html + every case-*.html page) */
 const lightbox = document.getElementById("lightbox");
 if(lightbox){
   const lightboxImg = lightbox.querySelector("img");
@@ -54,7 +61,7 @@ if(lightbox){
   }
 
   document.addEventListener("click", e => {
-    const thumb = e.target.closest(".creds-thumb");
+    const thumb = e.target.closest(".creds-thumb, .case-img-btn");
     if(thumb){ openLightbox(thumb); return; }
     if(lightbox.hasAttribute("data-open") && (e.target.closest(".lightbox-close") || e.target === lightbox)){
       closeLightbox();

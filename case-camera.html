@@ -53,7 +53,9 @@
       <div class="case-row">
         <p>Milestone XProtect supplies camera access. A .NET scanner retrieves one representative JPEG per camera per scan, on a schedule or on demand. The ONNX classifier scores it, and the scanner records the prediction, confidence, and frame path. A REST API exposes those results to a Laravel dashboard that handles status, history, filters, charts, and the manual-review queue — with SQLite for early development and MySQL for broader deployment.</p>
         <figure class="case-figure">
-          <img class="case-img" src="images/case/camera-usecase.jpg" alt="Use case diagram showing the VMS operator and the Milestone management server interacting with the website through manual scans, routine scans, and results pages">
+          <button class="case-img-btn" aria-label="Enlarge: use case diagram of operator and Milestone server interactions">
+            <img class="case-img" src="images/case/camera-usecase.jpg" alt="Use case diagram showing the VMS operator and the Milestone management server interacting with the website through manual scans, routine scans, and results pages">
+          </button>
           <figcaption class="case-caption">System use case: how a scan request moves from operator or schedule through to results.</figcaption>
         </figure>
       </div>
@@ -63,14 +65,18 @@
       <div class="case-row">
         <p>The dashboard rolls scan results up into a single operational view: overall camera health, the most recent scan run, a rolling trend of clean-versus-dirty counts, and alerts for cameras that have stayed dirty long enough to need attention.</p>
         <figure class="case-figure">
-          <img class="case-img" src="images/case/camera-dashboard.jpg" alt="Operational dashboard showing camera health status, latest scan run, a seven-day scan trend chart, and dirty-duration alerts">
+          <button class="case-img-btn" aria-label="Enlarge: operational dashboard showing camera health, scan trend, and alerts">
+            <img class="case-img" src="images/case/camera-dashboard.jpg" alt="Operational dashboard showing camera health status, latest scan run, a seven-day scan trend chart, and dirty-duration alerts">
+          </button>
           <figcaption class="case-caption">Dashboard overview: camera health, scan trend, and alerts needing review.</figcaption>
         </figure>
       </div>
       <div class="case-row">
         <p>A filterable results table sits underneath, one row per scanned camera with its status, confidence score, and a manual-review action — the queue that uncertain predictions route into rather than being auto-actioned.</p>
         <figure class="case-figure">
-          <img class="case-img" src="images/case/camera-results.jpg" alt="Filterable results table listing scanned cameras with status, confidence score, and a view-details action, with camera identifiers and thumbnails blurred">
+          <button class="case-img-btn" aria-label="Enlarge: filterable per-camera results table">
+            <img class="case-img" src="images/case/camera-results.jpg" alt="Filterable results table listing scanned cameras with status, confidence score, and a view-details action, with camera identifiers and thumbnails blurred">
+          </button>
           <figcaption class="case-caption">Per-camera results table, filterable by status, building, camera, and date range.</figcaption>
         </figure>
       </div>
@@ -81,5 +87,11 @@
   </section>
 </main>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button class="lightbox-close">close</button>
+  <img src="" alt="">
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
