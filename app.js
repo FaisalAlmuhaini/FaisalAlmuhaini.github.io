@@ -43,6 +43,7 @@ const lightbox = document.getElementById("lightbox");
 if(lightbox){
   const lightboxImg = lightbox.querySelector("img");
   const lightboxClose = lightbox.querySelector(".lightbox-close");
+  const lightboxDownload = lightbox.querySelector(".lightbox-download");
   let lastTrigger = null;
 
   function openLightbox(thumb){
@@ -50,6 +51,19 @@ if(lightbox){
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
     lastTrigger = thumb;
+    /* triggers that carry data-download (e.g. the résumé thumbnail)
+       show a PDF download link inside the lightbox; others don't */
+    if(lightboxDownload){
+      const href = thumb.dataset.download;
+      if(href){
+        lightboxDownload.href = href;
+        lightboxDownload.download = thumb.dataset.downloadName || "";
+        lightboxDownload.hidden = false;
+      } else {
+        lightboxDownload.hidden = true;
+        lightboxDownload.removeAttribute("href");
+      }
+    }
     lightbox.toggleAttribute("data-open", true);
     lightboxClose.focus();
   }
@@ -61,7 +75,7 @@ if(lightbox){
   }
 
   document.addEventListener("click", e => {
-    const thumb = e.target.closest(".creds-thumb, .case-img-btn");
+    const thumb = e.target.closest(".creds-thumb, .case-img-btn, .resume-thumb-btn");
     if(thumb){ openLightbox(thumb); return; }
     if(lightbox.hasAttribute("data-open") && (e.target.closest(".lightbox-close") || e.target === lightbox)){
       closeLightbox();

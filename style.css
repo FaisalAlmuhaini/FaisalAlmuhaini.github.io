@@ -231,6 +231,8 @@ main{
   letter-spacing:0.09em; color:var(--muted); margin:0 0 0.5rem;
 }
 .skill-group p{margin:0; color:#3A3A3A}
+.creds-layout{display:flex; align-items:flex-start; gap:4.5rem}
+.creds-main{flex:0 1 38rem; min-width:0}
 .creds{list-style:none; margin:0; padding:0; max-width:38rem}
 .creds li{
   display:flex; align-items:center; gap:1.25rem;
@@ -239,6 +241,30 @@ main{
 .creds-text{display:flex; flex-direction:column}
 .creds-text span:last-child{color:var(--muted); font-size:0.75rem; padding-top:0.25rem}
 .footnote{font-size:0.8125rem; color:var(--muted); max-width:46ch; margin:2rem 0 0}
+
+/* résumé, in the field's empty right side */
+.resume-panel{flex:0 1 26rem; min-width:0; max-width:26rem}
+.resume-thumb-btn{all:unset; cursor:zoom-in; display:block; width:100%}
+.resume-thumb-btn img{width:100%; height:auto; display:block}
+.resume-thumb-btn:focus-visible{outline:1px solid var(--ink); outline-offset:4px}
+@media (hover:hover) and (pointer:fine){
+  .resume-thumb-btn{transition:opacity 120ms ease}
+  .resume-thumb-btn:hover{opacity:0.85}
+}
+.resume-download-link{
+  all:unset; cursor:pointer; display:inline-block;
+  margin-top:0.85rem; font-size:0.8125rem; color:var(--label);
+}
+@media (hover:hover) and (pointer:fine){
+  .resume-download-link{transition:color 120ms ease}
+  .resume-download-link:hover{color:var(--ink)}
+}
+.resume-download-link:focus-visible{outline:1px solid var(--ink); outline-offset:3px}
+@media (max-width:60rem){
+  .creds-layout{flex-direction:column; gap:2.75rem}
+  .creds-main{flex-basis:auto}
+  .resume-panel{flex-basis:auto; max-width:20rem}
+}
 
 /* credential thumbnail + lightbox */
 .creds-thumb{
@@ -269,6 +295,15 @@ main{
   .lightbox-close:hover{opacity:0.7}
 }
 .lightbox-close:focus-visible{outline:1px solid #F0EAD6; outline-offset:4px}
+.lightbox-download{
+  all:unset; cursor:pointer; position:fixed; bottom:1.75rem; right:1.75rem;
+  font-size:0.8125rem; color:#F0EAD6;
+}
+@media (hover:hover) and (pointer:fine){
+  .lightbox-download{transition:opacity 120ms ease}
+  .lightbox-download:hover{opacity:0.7}
+}
+.lightbox-download:focus-visible{outline:1px solid #F0EAD6; outline-offset:4px}
 
 .contact-list{list-style:none; margin:0; padding:0}
 .contact-list li{margin:0 0 0.75rem}
