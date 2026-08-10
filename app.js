@@ -64,13 +64,14 @@ if(lightbox){
         lightboxDownload.removeAttribute("href");
       }
     }
-    /* credential images (certificates, recommendation letter) are
-       view-only by design — no download link is ever offered for them,
-       and right-click/drag is discouraged on the enlarged version too.
-       This is a deterrent, not real protection: anyone can still use
-       view-source, devtools, or a screenshot. It just removes the
-       one-click "save image as" affordance. */
-    lightbox.classList.toggle("protected", thumb.classList.contains("creds-thumb"));
+    /* every zoomable image is view-only by design except the résumé,
+       which has its own explicit PDF download link — no download link
+       is ever offered for the rest, and right-click/drag is discouraged
+       on the enlarged version too. This is a deterrent, not real
+       protection: anyone can still use view-source, devtools, or a
+       screenshot. It just removes the one-click "save image as"
+       affordance. */
+    lightbox.classList.toggle("protected", !thumb.classList.contains("resume-thumb-btn"));
     lightbox.toggleAttribute("data-open", true);
     lightboxClose.focus();
   }
@@ -95,7 +96,11 @@ if(lightbox){
 
   /* deterrent only, see openLightbox() comment above */
   document.addEventListener("contextmenu", e => {
-    if(e.target.closest(".creds-thumb img") || e.target.closest(".lightbox.protected img")){
+    if(
+      e.target.closest(".creds-thumb img") ||
+      e.target.closest(".case-img-btn img") ||
+      e.target.closest(".lightbox.protected img")
+    ){
       e.preventDefault();
     }
   });
