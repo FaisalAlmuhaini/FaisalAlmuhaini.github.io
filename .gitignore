@@ -15,6 +15,11 @@ CLAUDE.local.md
 dist/
 build/
 
+# Accidental npm artifacts from browser-testing tools (this site has no build step)
+node_modules/
+package.json
+package-lock.json
+
 # Never commit
 .env
 *.pem

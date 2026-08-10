@@ -1,0 +1,13 @@
+# GitHub Pages build config.
+#
+# This site has no build step and uses none of Jekyll's templating —
+# this file exists only to control what Jekyll (which GitHub Pages runs
+# by default) actually publishes. Everything listed here stays in the
+# git repository and git history as before; it just won't be served at
+# a public URL on the live site.
+exclude:
+  - CLAUDE.md
+  - mockup-a-casework.html
+  - mockup-b-specsheet.html
+  - .gitignore
+  - README.md
