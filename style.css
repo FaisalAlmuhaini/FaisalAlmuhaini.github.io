@@ -114,6 +114,20 @@ main{
 .statement + .statement{margin-top:1.6rem}
 .lede{max-width:46ch; color:var(--ink); margin:3.5rem 0 0}
 
+/* home: statements + experience on the left, NVIDIA badge in the empty right side */
+.home-layout{display:flex; align-items:flex-start; gap:4.5rem}
+.home-main{flex:0 1 44rem; min-width:0}
+.home-badge{flex:0 0 12rem; width:12rem; margin-top:0.35rem}
+.creds-thumb.home-badge-btn{width:100%; height:auto}
+.creds-thumb.home-badge-btn img{width:100%; height:auto; object-fit:initial}
+.badge-caption{font-size:0.75rem; color:var(--muted); line-height:1.5; margin:0.85rem 0 0}
+@media (max-width:60rem){
+  .home-layout{flex-direction:column; gap:2.5rem}
+  .home-main{flex-basis:auto}
+  .home-badge{flex-basis:auto; width:auto; margin-top:0}
+  .creds-thumb.home-badge-btn{width:9rem}
+}
+
 /* home experience list */
 .experience{list-style:none; margin:3.5rem 0 0; padding:0; max-width:44rem}
 .experience li{margin:0 0 2rem}
