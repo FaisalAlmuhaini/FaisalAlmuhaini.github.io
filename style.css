@@ -114,11 +114,11 @@ main{
 .statement + .statement{margin-top:1.6rem}
 .lede{max-width:46ch; color:var(--ink); margin:3.5rem 0 0}
 
-/* home: statements + experience on the left, NVIDIA badge alone in the empty right side.
+/* home: statements + experience on the left, NVIDIA and AWS badges stacked in the right side.
    Stays beside the text down to 40rem; only phone widths stack it underneath. */
 .home-layout{display:flex; align-items:flex-start; gap:3rem; max-width:74rem}
 .home-main{flex:0 1 44rem; min-width:0}
-.home-badge{flex:0 0 14rem; width:14rem; margin-left:auto; margin-top:0.35rem}
+.home-badge{flex:0 0 14rem; width:14rem; margin-left:auto; margin-top:0.35rem; display:flex; flex-direction:column; gap:1.5rem}
 .creds-thumb.home-badge-btn{width:100%; height:auto}
 .creds-thumb.home-badge-btn img{width:100%; height:auto; object-fit:initial}
 @media (max-width:60rem){
@@ -128,7 +128,7 @@ main{
 @media (max-width:40rem){
   .home-layout{flex-direction:column; gap:2.5rem}
   .home-main{flex-basis:auto}
-  .home-badge{flex-basis:auto; width:auto; margin:0}
+  .home-badge{flex-basis:auto; width:auto; margin:0; flex-direction:row; flex-wrap:wrap}
   .creds-thumb.home-badge-btn{width:10rem}
 }
 
