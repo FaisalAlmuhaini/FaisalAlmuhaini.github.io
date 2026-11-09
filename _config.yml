@@ -7,7 +7,5 @@
 # a public URL on the live site.
 exclude:
   - CLAUDE.md
-  - mockup-a-casework.html
-  - mockup-b-specsheet.html
   - .gitignore
   - README.md
