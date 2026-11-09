@@ -34,7 +34,7 @@
 
   <div class="caption">
     <strong id="cap-title">Traffic signal control</strong>
-    <span id="cap-sub">Object detection, SUMO — 2024</span>
+    <span id="cap-sub">Object detection, SUMO</span>
   </div>
 </aside>
 <!-- /SIDEBAR -->
@@ -43,7 +43,7 @@
   <section class="view case" data-view="case-traffic" data-active>
     <a class="back" href="index.html#work">← work</a>
     <h1>Traffic signal control</h1>
-    <p class="meta">2024 · object detection · graduation project</p>
+    <p class="meta">object detection · graduation project</p>
     <div class="case-body">
       <p>Fixed-cycle traffic lights hold a green light for an empty lane while a queue builds beside it. The graduation project replaced the cycle with the thing it should have been reading all along — how many cars are actually waiting.</p>
       <p>YOLOv11 detects and counts vehicles inside a bounded region, incrementing on an entry line and decrementing on an exit line. The count maps to a green duration through a rule set. A four-way intersection in SUMO provided the test bed, and a Streamlit interface exposed the dataset, the live predictions, and the simulation.</p>

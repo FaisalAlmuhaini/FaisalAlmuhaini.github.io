@@ -114,13 +114,15 @@ main{
 .statement + .statement{margin-top:1.6rem}
 .lede{max-width:46ch; color:var(--ink); margin:3.5rem 0 0}
 
-/* home: statements + experience on the left, NVIDIA and AWS badges stacked in the right side.
+/* home: statements + experience on the left, NVIDIA, AWS and GitHub badges stacked in the right side.
    Stays beside the text down to 40rem; only phone widths stack it underneath. */
 .home-layout{display:flex; align-items:flex-start; gap:3rem; max-width:74rem}
 .home-main{flex:0 1 44rem; min-width:0}
 .home-badge{flex:0 0 14rem; width:14rem; margin-left:auto; margin-top:0.35rem; display:flex; flex-direction:column; gap:1.5rem}
 .creds-thumb.home-badge-btn{width:100%; height:auto}
 .creds-thumb.home-badge-btn img{width:100%; height:auto; object-fit:initial}
+/* GitHub's SVG has no transparent padding, so it is drawn slightly narrower to match the visible size of the NVIDIA and AWS PNG badges */
+.creds-thumb.home-badge-btn.badge-github{width:93%; align-self:center}
 @media (max-width:60rem){
   .home-layout{gap:2rem}
   .home-badge{flex-basis:9.5rem; width:9.5rem}
@@ -130,6 +132,7 @@ main{
   .home-main{flex-basis:auto}
   .home-badge{flex-basis:auto; width:auto; margin:0; flex-direction:row; flex-wrap:wrap}
   .creds-thumb.home-badge-btn{width:10rem}
+  .creds-thumb.home-badge-btn.badge-github{width:9.3rem; align-self:auto}
 }
 
 /* home experience list */
